@@ -1,0 +1,159 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace = "admin/_fragments :: head(~{::title})">
+
+<title>imgside list</title>
+
+</head>
+<!--index独有样式-->
+<link rel="stylesheet" href="../static/css/index-m-center.css" th:href="@{/css/index-m-center.css}">
+
+<style>
+	body::-webkit-scrollbar {/*滚动条整体样式*/
+		width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+		height: 4px;
+	}
+	body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+		border-radius: 50%;
+		-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+		background:#0066A7;
+	}
+	body::-webkit-scrollbar-track {/*滚动条里面轨道*/
+		-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+		border-radius: 0;
+		background: rgba(0,0,0,0.1);
+	}	
+	*{
+		margin:0;
+		padding:0;
+    }
+
+</style>	
+	
+
+
+<body>
+
+<img  src="#" id="img" th:src="@{https://i0.hdslb.com/bfs/album/e7043be999b9e1883c82255f2ca38efbb2050ed7.png}" style="position: fixed;z-index: -999999999999;left:0;right:0;height:1080px;transition: all 5s;" alt="">
+
+    <div th:replace="admin/_fragments :: imgs">
+
+	</div>
+
+
+	<!---右键点击---->
+	<div  th:replace="admin/_fragments :: GalDown">
+
+	</div>
+
+
+	<!--左边部分-->
+	<div th:replace="admin/_fragments :: LeftMenu">
+
+	</div>
+	<button class="side-button"></button>
+
+    <!--头部-->
+	<header>
+        <div th:replace="admin/_fragments :: HeadNav">
+
+		</div>
+	</header>
+
+
+	<session>
+
+
+		  <div class="animated fadeInUp" style="width:1600px;background:rgba(255,255,255,0.4);padding:0.1px;margin-top:20px;margin-left:270px;">
+              <h1 style="width:100%;background:rgba(255,255,255,0.5);
+                   font-family: AcadEref;margin-top: 20px;margin-bottom: 20px;
+                   text-align: center;border-bottom:2px solid #979797">
+				  背景图片流
+			  </h1>
+              <!--表内容-->
+			  <div style="width:1600px;background: rgba(255,255,255,0.4);padding:0.1px;margin-top: 20px;">
+
+                  <div  th:each="img:${imgSides}" style="width:100%;
+                  										 border-radius: 20px;
+                                                         border:2px solid #fff;margin-top:15px;
+														 display: flex;justify-content: space-between;
+														 box-sizing: border-box;padding:2px 15px;
+														 align-items: center">
+					  <div style="border-radius: 20px;height:250px;border:1px solid #fff;overflow: hidden"><img style="height: 100%;" th:src="@{${img.getUrl()}}" alt=""></div>
+					  <div th:text="${img.getUrl()}" style="border-radius: 20px;font-size: 20px;padding:8px;width:900px;border:2px solid #fff;height:90%;word-wrap: break-word"></div>
+					  <div style="border-radius: 20px;;padding:8px;border:2px solid #fff;">
+						  <a href="#" th:href="@{/admin/imgSides/{id}/input(id=${img.id})}" class="ui mimi teal basic button">编辑</a>
+						  <a href="#" th:href="@{/admin/imgSides/{id}/delete(id=${img.id})}" class="ui mimi red basic button">删除</a>
+					  </div>
+				  </div>
+                  <div style="width:100%;display: flex;justify-content: center"><a href="#" th:href="@{/admin/imgSides/input}" class="ui mini right floated teal basic button">新增</a></div>
+				  <div th:text="${error}"></div>
+			  </div>
+
+
+		  </div>
+
+
+	</session>
+
+
+
+	<footer>
+         <div th:replace="admin/_fragments :: Bottom">
+
+		 </div>
+	</footer>
+	
+	<!--回到顶部-->
+    <div  class="ui vertical icon buttons" style="position: fixed;bottom: 0;right:0;padding:10px">
+		<a href="#" id="toTop" class="ui white button"><i class="chevron up icon"></i></a>
+	</div>
+
+<script>var isIndex = 1;</script>
+<script src="../static/js/jquery-2.1.3.min.js" th:src="@{/js/jquery-2.1.3.min.js}"></script>
+<script src="../static/js/side-js.js" th:src="@{/js/side-js.js}"></script>
+<script src="../static/js/m-background.js" th:src="@{/js/m-background.js}"></script>
+<script src="../static/js/m-GalDown.js" th:src="@{/js/m-GalDown.js}"></script>
+<script src="../static/js/isotope.pkgd.min.js" th:src="@{/js/isotope.pkgd.min.js}"></script>
+<script src="../static/js/isotype-filter.js" th:src="@{/js/isotype-filter.js}"></script>
+<script src="../static/js/m-header.js" th:src="@{/js/m-header.js}"></script>
+<script src="../static/js/m-center.js" th:src="@{/js/m-center.js}"></script>
+<script src="../static/js/m-footer.js" th:src="@{/js/m-footer.js}"></script>
+<!--独有js-->	
+<script src="../static/js/index-m-center.js" th:src="@{/js/index-m-center.js}"></script>
+<!--semantic-->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js" th:src="@{https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js}"></script>
+<!--平滑滚动-->
+<script src="../static/lib/jquery.scrollTo-master/jquery.scrollTo-master/jquery.scrollTo.js"></script>
+<script>
+  	$len1 = $(".center-container").css("height")
+	$(".m-center").css("min-height",$len1)	
+</script>
+<script>
+   $(document).ready(function(){
+	    $toTop =  $("#toTop");
+	    $toTop.click(function(){
+		   $(window).scrollTo(0,500);
+	    })
+	   
+	    $len = $toTop.offset().top;
+		  if($len>1100){
+			  $toTop.css({"display":"block"})
+		  }else{
+			  $toTop.css({"display":"none"})
+		  }
+	   
+	  $(window).scroll(function(){
+		  $len = $toTop.offset().top;
+		  if($len>1100){
+			  $toTop.css({"display":"block"})
+		  }else{
+			  $toTop.css({"display":"none"})
+		  }
+	  })
+	   
+	   
+   })
+</script>
+</body>
+</html>

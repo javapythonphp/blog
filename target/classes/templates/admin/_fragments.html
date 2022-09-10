@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="head(title)">
+    <meta name="referrer" content="never">
+    <meta charset="utf-8">
+    <title th:replace="${title}">aaa</title>
+    <link rel="stylesheet" th:href="@{/css/MusicPlayer.css}">
+    <link href="../static/css/side-css.css" rel="stylesheet" th:href="@{/css/side-css.css}">
+    <link href="../static/css/m-background.css" rel="stylesheet" th:href="@{/css/m-background.css}">
+    <link href="../static/css/m-GalDown.css" rel="stylesheet" th:href="@{/css/m-GalDown.css}">
+    <link href="../static/css/m-center.css" rel="stylesheet" th:href="@{/css/m-center.css}">
+    <link href="../static/css/m-header.css" rel="stylesheet" th:href="@{/css/m-header.css}">
+    <link href="../static/css/m-footer.css" rel="stylesheet" th:href="@{/css/m-footer.css}">
+    <link rel="stylesheet" th:href="@{/css/center-other.css}">
+    <!--外部引用样式-->
+    <link href="../static/lib/typo/typo.css" rel="stylesheet" th:href="@{/lib/typo/typo.css}">
+    <link href="../static/lib/animate/animate.css" rel="stylesheet" th:href="@{/lib/animate/animate.css}">
+    <!--semantic-->
+    <link rel="stylesheet" href=""
+          th:href="@{/semantic/semantic.css}">
+    <!--文字-->
+    <link rel="stylesheet" th:href="@{/css/m-font.css}">
+    <!--kbn-->
+    <link rel="stylesheet" type="text/css" href="assets/waifu.css" th:href="@{/assets/waifu.css}"/>
+    <link rel="stylesheet" type="text/css" href="/css/page-cover.css" th:href="@{/css/page-cover.css}">
+</head>
+<body>
+
+<div th:fragment="page-cover"  id="page-cover" class="page-cover">
+    <div style="position:relative; left:50%;top:50%;transform: translate(-50%,50%)">加载中</div>
+</div>
+
+<div th:fragment="imgs">
+
+    <img th:each="imgFlow:${imgFlows}" th:src="@{${imgFlow.url}}" alt="" class="m-background" style="display: none;opacity: 0">
+
+</div>
+
+<div th:fragment="page-cover" class="load-animation">
+    <img src="" th:src="@{${backImg.url}}" alt="" style="position: absolute;height:1080px">
+    <div class="load">
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar">	</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="m-header" th:fragment="HeadNav">
+    <div class="head-containner">
+        <div class="m-title">
+            <a><p>Blog</p></a>
+        </div>
+        <div id="filters">
+            <button class="header-button" data-filter="*">管理页面</button>
+        </div>
+        <form id="search-form"  th:action="@{/index/search}" method="post" name="search" target="_blank">
+            <div class="ui icon inverted transparent input">
+                <input type="text" name="query" placeholder="search...">
+                <i onclick="document.forms['search'].submit()" class="search link icon"></i>
+            </div>
+        </form>
+        <button class="right-button"></button>
+    </div>
+</div>
+
+
+
+<div th:fragment="GalDown" class="m-GalDown">
+    <div class="m-ring">
+        <a href="index.html" th:href="@{/index}" class="m-item">主页</a>
+        <a href="#" th:href="@{/admin}" class="m-item">登录</a>
+        <a href="#" th:href="@{/admin/logout}" class="m-item">注销</a>
+        <a href="#" onclick="window.history.go(-1)" class="m-item">返回</a>
+        <a href="#" th:href="@{/admin/blogs}" class="m-item">博客</a>
+        <a href="#" onclick="history.go(0)" class="m-item">刷新</a>
+    </div>
+</div>
+
+
+
+
+
+<div class="m-side"  th:fragment="LeftMenu">
+    <img src="../static/images/side-image/11.png" th:src="@{${img0}}" style="position: absolute;z-index: -11;height:1080px;background-position: 200px 200px;">
+    <div class="m-head">
+        <img src="../static/images/side-image/1.png" th:src="@{/images/side-image/1.png} ">
+        <p>开发者:茕丿夜</p>
+    </div>
+    <div class="m-list">
+        <ul>
+            <li><a href="#" th:href="@{/admin}" target="_blank"><img src="../static/images/side-image/2.png" th:src="@{/images/side-image/2.png}" alt=""><p>管理员登录</p></a></li>
+            <li><a href="#" th:href="@{/admin/types}" target="_blank"><img src="../static/images/side-image/3.png" th:src="@{/images/side-image/3.png}" alt=""><p>分类管理</p></a></li>
+            <li><a href="#" th:href="@{/admin/tags}" target="_blank"><img src="../static/images/side-image/4.png" th:src="@{/images/side-image/4.png}" alt=""><p>标签管理</p></a></li>
+            <li><a href="#" th:href="@{/admin/columns}" target="_blank"><img src="../static/images/side-image/5.png" th:src="@{/images/side-image/5.png}" alt=""><p>专栏管理</p></a></li>
+            <li><a href="#" th:href="@{/admin/blogs}" target="_blank"><img src="../static/images/side-image/7.png" th:src="@{/images/side-image/7.png}" alt=""><p>博客管理</p></a></li>
+            <li><a href="#" th:href="@{/admin/imgFlows}" target="_blank"><img src="../static/images/side-image/6.png" th:src="@{/images/side-image/6.png}" alt=""><p>图片流管理</p></a></li>
+            <li><a href="#" th:href="@{/admin/imgSides}" target="_blank"><img src="../static/images/side-image/7.png" th:src="@{/images/side-image/7.png}" alt=""><p>侧图管理</p></a></li>
+            <li><a href="#" th:href="@{/admin/logout}" ><img src="../static/images/side-image/7.png" th:src="@{/images/side-image/7.png}" alt=""><p>注销</p></a></li>
+        </ul>
+        <img src="static/images/side-image/wechat.jpg" th:src="@{images/side-image/wechat.jpg}">
+    </div>
+</div>
+
+
+
+
+<div class="center-container" th:fragment="RightMenu">
+    <div class="row mt-20 grid">
+        <div class="one">
+            <div class="center-box">
+                <h2>123</h2>
+                <div>
+                    <a href=" /blog" target="_blank">
+                        <p>该链接会跳转到第一个分类页面，当做测试</p>
+                        <div class="img-cover"></div>
+                        <img class="imgSide" src="../static/images/center/1.jpg" th:src="@{${img1}}">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="one">
+            <div class="center-box">
+                <h2>123</h2>
+                <div>
+                    <a href=" /blog" target="_blank">
+                        <p>该链接会跳转到第一个分类页面，当做测试</p>
+                        <div class="img-cover"></div>
+                        <img class="imgSide" src="../static/images/center/2.jpg" th:src="@{${img2}}">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="one">
+            <div class="center-box">
+                <h2>123</h2>
+                <div>
+                    <a href=" /blog" target="_blank">
+                        <p>该链接会跳转到第一个分类页面，当做测试</p>
+                        <div class="img-cover"></div>
+                        <img class="imgSide" src="../static/images/center/3.jpg" th:src="@{${img3}}">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="two">
+            <div class="center-box">
+                <h2>123</h2>
+                <div>
+                    <a href=" /blog" target="_blank">
+                        <p>该链接会跳转到第一个分类页面，当做测试</p>
+                        <div class="img-cover"></div>
+                        <img class="imgSide" src="../static/images/center/4.jpg" th:src="@{${img4}}">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="two">
+            <div class="center-box">
+                <h2>123</h2>
+                <div>
+                    <a href=" /blog" target="_blank">
+                        <p>该链接会跳转到第一个分类页面，当做测试</p>
+                        <div class="img-cover"></div>
+                        <img class="imgSide" src="../static/images/center/5.jpg" th:src="@{${img5}}">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="two">
+            <div class="center-box">
+                <h2>123</h2>
+                <div>
+                    <a href=" /blog" target="_blank">
+                        <p>该链接会跳转到第一个分类页面，当做测试</p>
+                        <div class="img-cover"></div>
+                        <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img6}}">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="three">
+            <div class="center-box">
+                <h2>123</h2>
+                <div>
+                    <a href=" /blog" th:href="@{/blog}" target="_blank">
+                        <p>该链接会跳转到第一个分类页面，当做测试</p>
+                        <div class="img-cover"></div>
+                        <img class="imgSide" src="../static/images/center/7.jpg" th:src="@{${img7}}">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="four">
+            <div class="center-box">
+                <h2>专栏详情</h2>
+                <div><!--这个div是表示标题下部区域 随图片大小变化 不可忽略!!!!!-->
+
+                    <div style="position: absolute;
+                                  top:10px;
+                                  bottom:10px;
+                                  left:10px;
+                                  right:0px;
+                                  z-index: 1050">
+                        <!--专栏搜索框-->
+                        <div style="height:55px;
+                                        width:100%;display: flex;
+                                        box-sizing: border-box;
+                                        padding:0 10px;
+                                        justify-content: space-between;
+                                        align-items: center">
+                            <input type="text" name="columnTitle" id="columnTitleValue"
+                                   style="width:60%;
+                                              height:30px;
+                                              outline: none;border-radius: 5px;
+                                              background: transparent;
+                                              color:#fff;">
+                            <button onclick="sendcolumnTitle()" class="ui teal basic button" id="column-search-btn" type="button"><i class="search icon"></i></button>
+                        </div>
+                        <div id="columns" style="position: absolute;
+                                                     top:55px;bottom:0px;
+                                                     left:10px;right:10px;
+                                                     overflow-y: scroll">
+                            <!--替换体-->
+                            <div th:fragment="columnMuban" th:each="columnDetail:${columnsDetails}" th:if="${columnDetail.id}!=0">
+                                <a href="#" th:href="@{/index/columns/{id}(id=${columnDetail.id})}" target="_blank">
+                                    <div style="width:100%;height:80px;
+                                                    margin-top:8px;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: space-between;
+                                                    border: 2px solid #fff;
+                                                    box-sizing: border-box;
+                                                    padding-left: 10px;border-radius:15px;
+                                                    background: rgba(177,177,177,0.5);
+                                                    overflow: hidden">
+                                            <span th:text="${columnDetail.title}" style="font-size: 18px;
+                                                                                         line-height: 20px;
+                                                                                         font-weight: bold;
+                                                                                         color:#fff;
+                                                                                         max-width: 230px">
+                                            </span>
+                                        <img src="" th:src="@{${columnDetail.firstPicture}}" style="height:75px;
+                                                                                                        border-radius: 15px;"
+                                             alt="">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="img-cover"></div>
+                    <img class="imgSide" src="../static/images/center/7.jpg" th:src="@{${img8}}">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div th:fragment="RightMenu2" class="center-other">
+
+    <div class="announce"></div>
+
+    <div class="MusicPlayer">
+        <audio id="audio" onended="AfterEnded()" src="" autoplay></audio>
+        <div class="music-head">
+            <div>
+                <img id="musicPicture" src="https://p1.music.126.net/8K1MPHadRavc2G9nMa3ATA==/2494791883448562.jpg?param=300y300" alt="">
+            </div>
+            <div class="center">
+                <div class="progressBar" onmousedown="scrollChange(this)">
+                    <div class="currentBar"><i class="icon circle"></i></div>
+                </div>
+                <div class="time">
+                    <p><span id="currenttime">0:00</span><span>/</span><span id="duration">0:00</span></p>
+                </div>
+            </div>
+            <div class="music-button">
+                <div class="pre" onclick="PreSong(this)"><i class="angle double left icon large"></i></div>
+                <div id="playPause" onclick="PlayOrPause(this)"><i class="pause icon large"></i></div>
+                <div class="next" onclick="NextSong(this)"><i class="angle double right icon large"></i></div>
+            </div>
+        </div>
+        <div class="songList">
+            <div class="song-out" onclick="changeMusic(this)" th:each="list:${MusicList}">
+                <div  onmouseover="onover(this)" onmouseout="onout(this)"  class="song"  th:data-value="${list.url}" th:data-pic="${list.cover}" th:text="${list.artist}+'-'+${list.name}"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="top-types">
+        <div class="top-types-head">
+            <span>分类</span>
+            <a>learn more</a>
+        </div>
+        <div th:each="type:${types}" class="top-type-container">
+            <a th:href="@{/index/types/{id}(id=${type.id})}" target="_blank" class="item">
+                <span th:text="${type.name}">aaa</span>
+                <div th:text="${#arrays.length(type.blogs)}" class="ui teal basic left pointing label">123</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="top-tags">
+        <div class="top-tags-head">
+            <span>标签</span>
+            <a >learn more</a>
+        </div>
+        <div class="top-tag-container">
+            <a th:each="tag:${tags}" th:href="@{/index/tags/{id}(id=${tag.id})}" target="_blank" class="ui teal basic left pointing label">
+                <span th:text="${tag.name}"></span><div th:text="${#arrays.length(tag.blogs)}" class="detail"></div>
+            </a>
+        </div>
+    </div>
+
+    <div class="top-recommend">
+        <div class="top-recommend-head">
+            <span>专栏</span>
+        </div>
+        <div th:each="column:${columns}" th:if="${column.id}!=0" class="top-recommend-container">
+            <a class="item" target="_blank" th:href="@{/index/columns/{id}(id=${column.id})}">
+                <span th:text="${column.title}">aaa</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="top-recommend">
+        <div class="top-recommend-head">
+            <span>推荐</span>
+        </div>
+        <div th:each="re:${recommend}" class="top-recommend-container">
+            <a class="item" target="_blank" th:href="@{/blog/{id}(id=${re.id})}">
+                <span th:text="${re.title}">aaa</span>
+            </a>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+<div class="m-footer" th:fragment="Bottom">
+    <div class="footer-container">
+        </a>
+        <div class="footer-about">
+            <h2>关于我</h2>
+            <p>因为无聊</p>
+            <p>找点有意思的事</p>
+        </div>
+        <div class="footer-connect">
+            <h2>联系我</h2>
+            <p>QQ:994484625</p>
+            <p>BiliBili:茕丿夜</p>
+            <p>明日方舟:茕丿夜</p>
+        </div>
+        <div class="footer-introduce">
+            <h2>介绍</h2>
+            <p>一个博客</p>
+            <p>随便写写，不是很完美</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>还没有注册域名，买倒是买了，但是懒</p>
+    </div>
+
+</div>
+
+</body>
+</html>

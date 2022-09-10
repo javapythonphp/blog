@@ -1,0 +1,191 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.m-side{
+	width:220px;
+	height:100%;
+	position: fixed;
+	overflow: hidden;
+	padding:0.01px;
+	left:-220px;
+	transition:all 0.6s;
+	z-index: 99;
+	box-shadow:0px 0px 15px #fff;
+}
+
+.m-side.side-trans{
+	left:0px;
+}
+.m-side .m-head{
+	padding:0.001px;
+	text-align:center;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right:10px;
+
+}
+
+.m-side .m-head img{
+	padding:0.001px;
+	margin-top:10px;
+	height:130px;
+	transform:translate(0,-150px);
+	transition:transform 1s;
+}
+
+.m-side .m-head img.img-trans{
+	transform:translate(0,0);
+}
+
+.m-side .m-head p{
+	padding:0.001px;
+	margin-top:18px;
+    font-size: 18px;
+	font-weight: 600;
+	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	margin-left: 10px;
+	margin-right:10px;
+	border-radius: 15px;
+	opacity: 0.7;
+	background-color:turquoise;
+	transform: translate(220px,0);
+	transition:transform 1s;
+
+}
+
+.m-side .m-head p.p-trans{
+	transform: translate(0,0);
+}
+
+.m-side .m-list{
+	padding:0.001px;
+	height:100%;
+	width:100%;
+	margin-top: 35px;
+}
+
+.m-side .m-list ul{
+	padding:0.001px;
+	list-style: none;
+	width:100%;
+}
+
+.m-side .m-list ul li{
+	position: relative;
+	margin-top:12px;
+	z-index: 999;
+	transition:all 1s;
+}
+
+.m-side .m-list ul li:before{
+	content:"";
+	position: absolute;
+	background: #A643C5;
+    height:inherit;
+	left:0;
+    right:0;
+	top:0;
+	bottom:0;
+	opacity:0.4;
+	z-index: -1;
+	transform-origin: 0 50%;
+	transform:scaleX(0);
+	transition:transform 0.3s ease-out;
+}
+
+.m-side .m-list ul li:hover:before{
+	transform:scaleX(1);
+}
+.m-side .m-list ul li:hover a p{
+	color:aqua;
+	font-weight: 800;
+	font-size: 25px;
+}
+
+
+.m-side .m-list ul li a{
+	padding:0.001px;
+	display: flex;
+	align-items: center;
+}
+
+.m-side .m-list ul li:nth-child(odd){
+	transform:translate(220px,0)
+}
+.m-side .m-list ul li:nth-child(even){
+	transform:translate(-220px,0)
+}
+.m-side .m-list ul li.li-trans{
+	transform:translate(0,0)
+}
+
+
+
+.m-side .m-list ul li a img{
+	height:55px;
+	margin-left: 15px;
+}
+
+.m-side .m-list ul li a p{
+	margin-left: 10px;
+	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", "sans-serif";
+	font-weight: 800;
+	color:#000000;
+	font-size: 20px;
+}
+
+.m-side .m-list>img{
+	width:150px;
+	position:absolute;
+	bottom: 50px;
+	left:35px;
+	border-radius: 25px;
+	opacity: 0.8;
+	transform: translate(0,150px);
+	transition: transform 1s;
+}
+.m-side .m-list>
+
+.weixin-trans{
+	transform: translate(0,0);
+}
+
+
+
+/*去除a的特效*/
+.m-side .m-list ul li a:visited{
+	text-decoration: none;
+}
+.m-side .m-list ul li a:hover{
+	text-decoration: none;
+}
+.m-side .m-list ul li a:link{
+	text-decoration: none;
+}
+.m-side .m-list ul li a:focus{
+	text-decoration: none;
+}
+
+.side-button{
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0);
+    background-image: url("button.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border: 0;
+    outline: none;
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    transition: all 0.6s;
+    cursor: pointer;
+	transform:rotate(0deg);
+	z-index: 9999999;
+}
+
+.side-button.button-trans{
+	left: 230px;
+	transform: rotate(450deg);
+}

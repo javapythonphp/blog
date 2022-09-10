@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* CSS Document */
+.m-GalDown{
+	position: absolute;
+	display: none;
+	z-index: 9999999999;
+}
+.m-ring{
+	position:relative;
+	width:300px;
+	height:300px;
+	opacity:0;
+	transform: rotate(-270deg) scale(0);
+	transition:all 0.5s ease-out;
+}
+
+.m-open{
+	opacity: 1;
+	transform: rotate(0deg) scale(1);
+}
+
+.m-item{
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 23px;
+	font-family:Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif";
+	position:absolute;
+	color:#fff;
+	width:80px;
+	height:80px;
+	line-height:80px;
+	border-radius: 50%;
+	text-align: center;
+	border:2px #b59494 solid;
+	box-shadow:0px 0px 15px #fff;
+	margin-top: -41px;
+	margin-left:-41px;
+	background-size:80px;
+	background-position: center;
+}
+.m-item:hover {
+	box-shadow:inset 0px 0px 80px #fff;
+}
+
+
+.m-ring a:nth-of-type(1) {
+	background-image:url("rotate/1.jpg");
+}
+.m-ring a:nth-of-type(2) {
+	background-image:url("rotate/2.jpg");
+}
+.m-ring a:nth-of-type(3) {
+	background-image:url("rotate/3.jpg");
+}
+.m-ring a:nth-of-type(4) {
+	background-image:url("rotate/4.jpg");
+}
+.m-ring a:nth-of-type(5) {
+	background-image:url("rotate/5.jpg");
+}
+.m-ring a:nth-of-type(6) {
+	background-image:url("rotate/6.jpg");
+}

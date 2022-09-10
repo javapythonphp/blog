@@ -1,0 +1,170 @@
+.load-animation>img{
+    position: absolute;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.load-animation{
+    position: fixed;
+    height:100%;
+    width:100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background: rgba(0,0,0,0.8);
+    transition:all 2s;
+    z-index: 999999999999999999999999999;
+}
+
+.load{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    animation:outerLoad 15s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+}
+
+.load::before{
+    content:"";
+    display: block;
+    width:40px;
+    height:40px;
+    background:#fff;
+    border-radius: 50%
+}
+
+.load>.sure-center{
+    position: absolute;
+}
+
+.load>.sure-center:nth-child(1){transform: rotate(0deg)}
+.load>.sure-center:nth-child(2){transform: rotate(20deg)}
+.load>.sure-center:nth-child(3){transform: rotate(40deg)}
+.load>.sure-center:nth-child(4){transform: rotate(60deg)}
+.load>.sure-center:nth-child(5){transform: rotate(80deg)}
+.load>.sure-center:nth-child(6){transform: rotate(100deg)}
+.load>.sure-center:nth-child(7){transform: rotate(120deg)}
+.load>.sure-center:nth-child(8){transform: rotate(140deg)}
+.load>.sure-center:nth-child(9){transform: rotate(160deg)}
+.load>.sure-center:nth-child(10){transform: rotate(180deg)}
+.load>.sure-center:nth-child(11){transform: rotate(200deg)}
+.load>.sure-center:nth-child(12){transform: rotate(220deg)}
+.load>.sure-center:nth-child(13){transform: rotate(240deg)}
+.load>.sure-center:nth-child(14){transform: rotate(260deg)}
+.load>.sure-center:nth-child(15){transform: rotate(280deg)}
+.load>.sure-center:nth-child(16){transform: rotate(300deg)}
+.load>.sure-center:nth-child(17){transform: rotate(320deg)}
+.load>.sure-center:nth-child(18){transform: rotate(340deg)}
+
+.load>.sure-center:nth-child(1)>div>.firstBar{animation-delay: 0}
+.load>.sure-center:nth-child(2)>div>.firstBar{animation-delay: 0.1s}
+.load>.sure-center:nth-child(3)>div>.firstBar{animation-delay: 0.2s}
+.load>.sure-center:nth-child(4)>div>.firstBar{animation-delay: 0.3s}
+.load>.sure-center:nth-child(5)>div>.firstBar{animation-delay: 0.4s}
+.load>.sure-center:nth-child(6)>div>.firstBar{animation-delay: 0.5s}
+.load>.sure-center:nth-child(7)>div>.firstBar{animation-delay: 0.6s}
+.load>.sure-center:nth-child(8)>div>.firstBar{animation-delay: 0.7s}
+.load>.sure-center:nth-child(9)>div>.firstBar{animation-delay: 0.8s}
+.load>.sure-center:nth-child(10)>div>.firstBar{animation-delay: 0.9s}
+.load>.sure-center:nth-child(11)>div>.firstBar{animation-delay: 1.0s}
+.load>.sure-center:nth-child(12)>div>.firstBar{animation-delay: 1.1s}
+.load>.sure-center:nth-child(13)>div>.firstBar{animation-delay: 1.2s}
+.load>.sure-center:nth-child(14)>div>.firstBar{animation-delay: 1.3s}
+.load>.sure-center:nth-child(15)>div>.firstBar{animation-delay: 1.4s}
+.load>.sure-center:nth-child(16)>div>.firstBar{animation-delay: 1.5s}
+.load>.sure-center:nth-child(17)>div>.firstBar{animation-delay: 1.6s}
+.load>.sure-center:nth-child(18)>div>.firstBar{animation-delay: 1.7s}
+
+.load>.sure-center:nth-child(1)>div>.secondBar{animation-delay: 0.46s}
+.load>.sure-center:nth-child(2)>div>.secondBar{animation-delay: 0.56s}
+.load>.sure-center:nth-child(3)>div>.secondBar{animation-delay: 0.66s}
+.load>.sure-center:nth-child(4)>div>.secondBar{animation-delay: 0.76s}
+.load>.sure-center:nth-child(5)>div>.secondBar{animation-delay: 0.86s}
+.load>.sure-center:nth-child(6)>div>.secondBar{animation-delay: 0.96s}
+.load>.sure-center:nth-child(7)>div>.secondBar{animation-delay: 1.06s}
+.load>.sure-center:nth-child(8)>div>.secondBar{animation-delay: 1.16s}
+.load>.sure-center:nth-child(9)>div>.secondBar{animation-delay: 1.26s}
+.load>.sure-center:nth-child(10)>div>.secondBar{animation-delay: 1.36s}
+.load>.sure-center:nth-child(11)>div>.secondBar{animation-delay: 1.46s}
+.load>.sure-center:nth-child(12)>div>.secondBar{animation-delay: 1.56s}
+.load>.sure-center:nth-child(13)>div>.secondBar{animation-delay: 1.76s}
+.load>.sure-center:nth-child(14)>div>.secondBar{animation-delay: 1.86s}
+.load>.sure-center:nth-child(15)>div>.secondBar{animation-delay: 1.96s}
+.load>.sure-center:nth-child(16)>div>.secondBar{animation-delay: 2.06s}
+.load>.sure-center:nth-child(17)>div>.secondBar{animation-delay: 2.16s}
+.load>.sure-center:nth-child(18)>div>.secondBar{animation-delay: 2.26s}
+
+.load>.sure-center>div{
+    position: relative;
+    height:500px;
+    width:30px;
+    background: transparent;
+    transform-origin: top center;
+    transform: rotateX(70deg);
+    overflow:hidden;
+}
+
+.load>.sure-center>div>.firstBar{
+    position: absolute;
+    width:100%;
+    border-radius: 15px 15px 0 0;
+    background: rgba(255,255,255,0.9);
+    animation:innerLoad1 1.8s;
+    animation-fill-mode:backwards;
+    animation-iteration-count: infinite;
+}
+
+.load>.sure-center>div>.secondBar{
+    position: absolute;
+    width:100%;
+    border-radius: 15px 15px 0 0;
+    background: rgba(255,255,255,0.2);
+    animation:innerLoad2 1.8s;
+    animation-fill-mode:backwards;
+    animation-iteration-count: infinite;
+}
+
+@keyframes innerLoad2{
+    0%{
+        bottom:0;
+        top:100%;
+    }
+    64%{
+        bottom:0%;
+        top:20%;
+    }
+    100%{
+        bottom:100%;
+        top:0;
+    }
+}
+
+@keyframes innerLoad1{
+    0%{
+        bottom:0;
+        top:100%;
+    }
+    20%{
+        bottom:0%;
+        top:20%;
+    }
+    30%{
+        bottom:0%;
+        top:20%;
+    }
+    100%{
+        bottom:100%;
+        top:0;
+    }
+}
+
+@keyframes outerLoad{
+    0%{transform: rotate(0deg)}
+    100%{transform: rotate(-360deg)}
+}
+
+.load-animation.page-cover-trans{
+    opacity: 0;
+}

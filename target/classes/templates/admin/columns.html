@@ -1,0 +1,229 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace = "admin/_fragments :: head(~{::title})">
+
+<title>columns list</title>
+
+</head>
+<!--index独有样式-->
+<link rel="stylesheet" href="../static/css/index-m-center.css" th:href="@{/css/index-m-center.css}">
+
+<style>
+	body::-webkit-scrollbar {/*滚动条整体样式*/
+		width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+		height: 4px;
+	}
+	body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+		border-radius: 50%;
+		-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+		background:#0066A7;
+	}
+	body::-webkit-scrollbar-track {/*滚动条里面轨道*/
+		-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+		border-radius: 0;
+		background: rgba(0,0,0,0.1);
+	}	
+	*{
+		margin:0;
+		padding:0;
+    }
+
+</style>	
+	
+
+
+<body>
+
+<img  src="#" id="img" th:src="@{https://i0.hdslb.com/bfs/album/e7043be999b9e1883c82255f2ca38efbb2050ed7.png}" style="position: fixed;z-index: -999999999999;left:0;right:0;height:1080px;transition: all 5s;" alt="">
+
+	<div th:replace="admin/_fragments :: imgs">
+
+	</div>
+
+	<!---右键点击---->
+	<div  th:replace="admin/_fragments :: GalDown">
+
+	</div>
+
+
+	<!--左边部分-->
+	<div th:replace="admin/_fragments :: LeftMenu">
+
+	</div>
+	<button class="side-button"></button>
+
+    <!--头部-->
+	<header>
+        <div th:replace="admin/_fragments :: HeadNav">
+
+		</div>
+	</header>
+
+
+	<session>
+	  <div class="m-center animated fadeInUp">
+
+		  <div style="width:1600px;background:rgba(255,255,255,0.4);padding:0.1px;">
+              <h1 style="width:100%;background:rgba(255,255,255,0.5);
+                   font-family: AcadEref;margin-top: 20px;margin-bottom: 20px;
+                   text-align: center;border-bottom:2px solid #979797">
+				  专栏管理
+			  </h1>
+			  <div style="display: flex;width:100%;height:50px;align-items: center;
+ 						 justify-content:space-between;box-sizing:border-box;padding:5px 10px">
+                 	 <div><span style="font-size: 35px;color:rgba(255,255,255,0.9)">输入标题:</span>
+					  <input id="keyWord" type="text" style="outline:none;
+														border:0;
+														width:60%;
+														height:100%;
+														border-radius:15px;
+														font-size:25px;
+														color:#999;" value="" name="keyWord"/></div>
+				  <div class="field">
+					  <button class="ui teal basic button" id="search-btn" type="button"><i class="search icon"></i></button>
+				  </div>
+			  </div>
+              <!--表内容-->
+			  <div id="columns-table" style="width:100%;min-height:500px;background: rgba(255,255,255,0.4);padding:0.1px;margin-top: 20px;">
+				  <table th:fragment = "muban" class="ui celled table">
+					  <thead>
+						  <tr>
+							  <th>预览</th>
+							  <th>题目</th>
+							  <th>操作</th>
+						  </tr>
+					  </thead>
+					  <tbody>
+					  <tr th:each="column:${page.content}" th:if="${column.id}!=0">
+						  <td style="width:280px"><img style="height:120px;" src="" th:src="@{${column.firstPicture}}" alt="none"></td>
+						  <td th:text="${column.title}" style="font-size: 28px;">
+							  刻意练习清单
+						  </td>
+						  <td style="width:500px">
+							  <a th:href="@{/admin/columns/{id}/input(id=${column.id})}" href="#" class="ui mimi teal basic button">编辑</a>
+							  <a th:href="@{/admin/columns/{id}/delete(id=${column.id})}" href="#" class="ui mimi red basic button">删除</a>
+						  </td>
+					  </tr>
+					  </tbody>
+					  <tfoot>
+					  <tr>
+						  <th colspan="6">
+							  <div id="flip-page" class="ui pagination menu" style="text-align: center;width:100%;display: flex;justify-content: space-between;box-sizing: border-box;padding:5px 120px;background: transparent;font-size: 20px">
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=${page.number-1}">上一页</a>
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=0">首页</a>
+
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=${page.number-6}"  th:text="${page.number-5}" th:if="${page.number-5>=page.totalPages-6&&page.number-5>=1}"></a>
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=${page.number-5}"  th:text="${page.number-4}" th:if="${page.number-4>=page.totalPages-6&&page.number-4>=1}"></a>
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=${page.number-4}"  th:text="${page.number-3}" th:if="${page.number-3>=page.totalPages-6&&page.number-3>=1}"></a>
+
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=${page.number-3}"  th:text="${page.number-2}" th:if="${page.number-2>=1}"></a>
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=${page.number-2}"  th:text="${page.number-1}" th:if="${page.number-1>=1}"></a>
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=${page.number-1}"  th:text="${page.number}" th:if="${page.number>=1}"></a>
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=${page.number}"  th:text="${page.number+1}" style="color:red"></a>
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=${page.number+1}"  th:text="${page.number+2}" th:if="${page.number+2<=page.totalPages}"></a>
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=${page.number+2}"  th:text="${page.number+3}" th:if="${page.number+3<=page.totalPages}"></a>
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=${page.number+3}"  th:text="${page.number+4}" th:if="${page.number+4<=page.totalPages}"></a>
+
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=${page.number+4}"  th:text="${page.number+5}" th:if="${page.number+5<=7&&page.number+5<=page.totalPages}"></a>
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=${page.number+5}"  th:text="${page.number+6}" th:if="${page.number+6<=7&&page.number+6<=page.totalPages}"></a>
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=${page.number+6}"  th:text="${page.number+7}" th:if="${page.number+7<=7&&page.number+7<=page.totalPages}"></a>
+
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=${page.totalPages-1}">尾页</a>
+								  <a class="icon mini item" onclick="flip(this)" th:attr="data-page=${page.number+1}">下一页</a>
+							  </div>
+							  <div style="display: none;" id="totalpage" th:attr="data-page=${page.totalPages}-1"></div>
+							  <a href="#" th:href="@{/admin/columns/input}" class="ui mini right floated teal basic button">新增</a>
+						  </th>
+					  </tr>
+					  </tfoot>
+				  </table>
+			  </div>
+
+              <div th:text="${error}" style="font-size: 30px;width:100%;text-align: center;font-width: 800;color:red;"></div>
+
+		  </div>
+
+
+	  </div>
+	</session>
+
+
+
+	<footer>
+         <div th:replace="admin/_fragments :: Bottom">
+
+		 </div>
+	</footer>
+	
+	<!--回到顶部-->
+    <div  class="ui vertical icon buttons" style="position: fixed;bottom: 0;right:0;padding:10px">
+		<a href="#" id="toTop" class="ui white button"><i class="chevron up icon"></i></a>
+	</div>
+
+<script>var isIndex = 1;</script>
+<script src="../static/js/jquery-2.1.3.min.js" th:src="@{/js/jquery-2.1.3.min.js}"></script>
+<script src="../static/js/side-js.js" th:src="@{/js/side-js.js}"></script>
+<script src="../static/js/m-background.js" th:src="@{/js/m-background.js}"></script>
+<script src="../static/js/m-GalDown.js" th:src="@{/js/m-GalDown.js}"></script>
+<script src="../static/js/isotope.pkgd.min.js" th:src="@{/js/isotope.pkgd.min.js}"></script>
+<script src="../static/js/isotype-filter.js" th:src="@{/js/isotype-filter.js}"></script>
+<script src="../static/js/m-header.js" th:src="@{/js/m-header.js}"></script>
+<script src="../static/js/m-center.js" th:src="@{/js/m-center.js}"></script>
+<script src="../static/js/m-footer.js" th:src="@{/js/m-footer.js}"></script>
+<!--独有js-->	
+<script src="../static/js/index-m-center.js" th:src="@{/js/index-m-center.js}"></script>
+<!--semantic-->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js" th:src="@{https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js}"></script>
+<!--平滑滚动-->
+<script src="../static/lib/jquery.scrollTo-master/jquery.scrollTo-master/jquery.scrollTo.js"></script>
+<script>
+  	$len1 = $(".center-container").css("height")
+	$(".m-center").css("min-height",$len1)	
+</script>
+<script>
+	function flip(obj){
+		if($(obj).data("page")>=0&&$(obj).data("page")<=$("#totalpage").data("page")) {
+			$("#columns-table").load("/admin/columns/flip", {
+				page: $(obj).data("page")
+			});
+			$(window).scrollTo(0, 0);
+		}
+	}
+/*ajax*/
+	$("#search-btn").click(function(){
+		$("#columns-table").load("/admin/columns/search",{
+			page:0,
+			keyWord:$("#keyWord").val()
+		});
+	})
+
+
+</script>
+<script>
+   $(document).ready(function(){
+	    $toTop =  $("#toTop");
+	    $toTop.click(function(){
+		   $(window).scrollTo(0,500);
+	    })
+	   
+	    $len = $toTop.offset().top;
+		  if($len>1100){
+			  $toTop.css({"display":"block"})
+		  }else{
+			  $toTop.css({"display":"none"})
+		  }
+	   
+	  $(window).scroll(function(){
+		  $len = $toTop.offset().top;
+		  if($len>1100){
+			  $toTop.css({"display":"block"})
+		  }else{
+			  $toTop.css({"display":"none"})
+		  }
+	  })
+	   
+	   
+   })
+</script>
+</body>
+</html>

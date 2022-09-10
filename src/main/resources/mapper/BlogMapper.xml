@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"  >
+<mapper namespace="com.zyc.myblog.mapper.blogMapper">
+    <resultMap id="blogMap" type="com.zyc.myblog.po.Blog">
+         <id column="id" property="id"></id>
+         <result property="title" column="title"></result>
+         <result property="content" column="content"></result>
+         <result property="firstPicture" column="first_picture"></result>
+         <result property="views" column="views"></result>
+         <result property="recommend" column="recommend"></result>
+         <result property="description" column="description"></result>
+         <result property="tagIds" column="tagIds"></result>
+         <result property="creatTime" column="creat_time"></result>
+         <result property="updateTime" column="update_time"></result>
+         <association property="type" javaType="com.zyc.myblog.po.Type" select="com.zyc.myblog.mapper.blogMapper.findType" column="type_id">
+         </association>
+         <association property="column" javaType="com.zyc.myblog.po.Column" select="com.zyc.myblog.mapper.blogMapper.findColumn" column="column_id">
+         </association>
+         <association property="user" javaType="com.zyc.myblog.po.User" select="com.zyc.myblog.mapper.blogMapper.findUser" column="user_id">
+         </association>
+         <collection property="tags" javaType="com.zyc.myblog.po.Tag">
+             <id property="id" column="tags_id"></id>
+             <result property="name" column="name"></result>
+         </collection>
+    </resultMap>
+
+    <select id="findAll" resultType="com.zyc.myblog.po.Blog" resultMap="blogMap">
+        select * from t_blog t,t_blog_tags bt,t_tag tt where t.id=bt.blogs_id and bt.tags_id=tt.id
+    </select>
+
+    <select id="findType" resultType="com.zyc.myblog.po.Type" parameterType="Long">
+        select * from t_type t where t.id=#{param1};
+    </select>
+
+    <resultMap id="columnMap" type="com.zyc.myblog.po.Column">
+        <result column="firstPicture" property="firstPicture"></result>
+    </resultMap>
+
+    <select id="findColumn" resultType="com.zyc.myblog.po.Column" parameterType="Long" resultMap="columnMap">
+        select * from t_column c where c.id=#{param1};
+    </select>
+
+    <select id="findUser" resultType="com.zyc.myblog.po.User" parameterType="Long">
+        select id,nickname from t_user u where u.id=#{param1};
+    </select>
+
+</mapper>

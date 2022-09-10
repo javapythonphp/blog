@@ -1,0 +1,55 @@
+2021-12-23 22:00:44.032  INFO 10072 --- [restartedMain] com.zyc.myblog.MyblogApplication         : Starting MyblogApplication on DESKTOP-JAKPI49 with PID 10072 (E:\MyBlogProject\target\classes started by 99448 in E:\MyBlogProject)
+2021-12-23 22:00:44.072 DEBUG 10072 --- [restartedMain] com.zyc.myblog.MyblogApplication         : Running with Spring Boot v2.1.13.RELEASE, Spring v5.1.14.RELEASE
+2021-12-23 22:00:44.073  INFO 10072 --- [restartedMain] com.zyc.myblog.MyblogApplication         : The following profiles are active: dev
+2021-12-23 22:00:44.245  INFO 10072 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-23 22:00:44.247  INFO 10072 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-23 22:00:46.367  INFO 10072 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 22:00:46.580  INFO 10072 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 178ms. Found 8 JPA repository interfaces.
+2021-12-23 22:00:48.813  INFO 10072 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20016 (http)
+2021-12-23 22:00:48.897  INFO 10072 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-23 22:00:48.897  INFO 10072 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2021-12-23 22:00:49.194  INFO 10072 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-23 22:00:49.195  INFO 10072 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4947 ms
+2021-12-23 22:00:49.579  INFO 10072 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-12-23 22:00:50.128  INFO 10072 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-12-23 22:00:50.234  INFO 10072 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2021-12-23 22:00:50.414  INFO 10072 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.15.Final}
+2021-12-23 22:00:50.416  INFO 10072 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2021-12-23 22:00:50.801  INFO 10072 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-12-23 22:00:51.454  INFO 10072 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-12-23 22:00:53.032  INFO 10072 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 22:00:53.110  INFO 10072 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-23 22:00:54.501  INFO 10072 --- [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2021-12-23 22:00:58.139  INFO 10072 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-23 22:00:58.405  WARN 10072 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 22:00:58.604  INFO 10072 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-12-23 22:00:59.524  INFO 10072 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20016 (http) with context path ''
+2021-12-23 22:00:59.527  INFO 10072 --- [restartedMain] com.zyc.myblog.MyblogApplication         : Started MyblogApplication in 17.024 seconds (JVM running for 18.916)
+2021-12-23 22:01:22.086  INFO 10072 --- [http-nio-20016-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-23 22:01:22.086  INFO 10072 --- [http-nio-20016-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-23 22:01:22.104  INFO 10072 --- [http-nio-20016-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 18 ms
+2021-12-23 22:01:22.170  INFO 10072 --- [http-nio-20016-exec-1] com.zyc.myblog.aspect.LogAspect          : Request:{url='http://127.0.0.1:20016/index', ip='127.0.0.1', classMethod='com.zyc.myblog.web.IndexController.goIndex', args=[{}, Page request [number: 0, size 10, sort: updateTime: DESC]]}
+2021-12-23 22:01:22.567  WARN 10072 --- [http-nio-20016-exec-1] org.hibernate.orm.deprecation            : HHH90000016: Found use of deprecated 'collection property' syntax in HQL/JPQL query [t.blogs.size]; use collection function syntax instead [size(t.blogs)].
+2021-12-23 22:01:22.603  WARN 10072 --- [http-nio-20016-exec-1] org.hibernate.orm.deprecation            : HHH90000016: Found use of deprecated 'collection property' syntax in HQL/JPQL query [t.blogs.size]; use collection function syntax instead [size(t.blogs)].
+2021-12-23 22:01:23.032  INFO 10072 --- [http-nio-20016-exec-1] com.zyc.myblog.aspect.LogAspect          : Result:index
+2021-12-23 22:01:54.052  INFO 10072 --- [http-nio-20016-exec-4] com.zyc.myblog.aspect.LogAspect          : Request:{url='http://127.0.0.1:20016/index/flip', ip='127.0.0.1', classMethod='com.zyc.myblog.web.IndexController.goFlip', args=[{}, Page request [number: 1, size 10, sort: updateTime: DESC]]}
+2021-12-23 22:01:54.081  INFO 10072 --- [http-nio-20016-exec-4] com.zyc.myblog.aspect.LogAspect          : Result:index::BlogPage
+2021-12-23 22:02:16.282  WARN 10072 --- [http-nio-20016-exec-6] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [463] milliseconds.
+2021-12-23 22:02:16.285  INFO 10072 --- [http-nio-20016-exec-6] com.zyc.myblog.aspect.LogAspect          : Request:{url='http://127.0.0.1:20016/blog/775', ip='127.0.0.1', classMethod='com.zyc.myblog.web.IndexController.goBlog', args=[{}, 775, org.apache.catalina.session.StandardSessionFacade@49f25d99]}
+2021-12-23 22:02:16.890  INFO 10072 --- [http-nio-20016-exec-6] com.zyc.myblog.aspect.LogAspect          : Result:blog
+2021-12-23 22:02:21.042  INFO 10072 --- [http-nio-20016-exec-6] com.zyc.myblog.aspect.LogAspect          : Request:{url='http://127.0.0.1:20016/blog/comments/775;jsessionid=BBFE66908D7EA723B73BE3AABD0D2581', ip='127.0.0.1', classMethod='com.zyc.myblog.web.CommentController.comments', args=[775, {}, org.apache.catalina.session.StandardSessionFacade@49f25d99]}
+2021-12-23 22:02:21.112  INFO 10072 --- [http-nio-20016-exec-6] com.zyc.myblog.aspect.LogAspect          : Result:blog::commentList
+2021-12-23 22:02:25.872  INFO 10072 --- [http-nio-20016-exec-2] com.zyc.myblog.aspect.LogAspect          : Request:{url='http://127.0.0.1:20016/blog/611', ip='127.0.0.1', classMethod='com.zyc.myblog.web.IndexController.goBlog', args=[{}, 611, org.apache.catalina.session.StandardSessionFacade@49f25d99]}
+2021-12-23 22:02:26.150  INFO 10072 --- [http-nio-20016-exec-2] com.zyc.myblog.aspect.LogAspect          : Result:blog
+2021-12-23 22:02:29.874  INFO 10072 --- [http-nio-20016-exec-7] com.zyc.myblog.aspect.LogAspect          : Request:{url='http://127.0.0.1:20016/blog/614', ip='127.0.0.1', classMethod='com.zyc.myblog.web.IndexController.goBlog', args=[{}, 614, org.apache.catalina.session.StandardSessionFacade@49f25d99]}
+2021-12-23 22:02:30.082  INFO 10072 --- [http-nio-20016-exec-7] com.zyc.myblog.aspect.LogAspect          : Result:blog
+2021-12-23 22:02:31.259  INFO 10072 --- [http-nio-20016-exec-9] com.zyc.myblog.aspect.LogAspect          : Request:{url='http://127.0.0.1:20016/blog/comments/611', ip='127.0.0.1', classMethod='com.zyc.myblog.web.CommentController.comments', args=[611, {}, org.apache.catalina.session.StandardSessionFacade@49f25d99]}
+2021-12-23 22:02:31.268  INFO 10072 --- [http-nio-20016-exec-9] com.zyc.myblog.aspect.LogAspect          : Result:blog::commentList
+2021-12-23 22:02:33.133  INFO 10072 --- [http-nio-20016-exec-6] com.zyc.myblog.aspect.LogAspect          : Request:{url='http://127.0.0.1:20016/blog/comments/614', ip='127.0.0.1', classMethod='com.zyc.myblog.web.CommentController.comments', args=[614, {}, org.apache.catalina.session.StandardSessionFacade@49f25d99]}
+2021-12-23 22:02:33.146  INFO 10072 --- [http-nio-20016-exec-6] com.zyc.myblog.aspect.LogAspect          : Result:blog::commentList
+2021-12-23 22:02:35.923  INFO 10072 --- [http-nio-20016-exec-2] com.zyc.myblog.aspect.LogAspect          : Request:{url='http://127.0.0.1:20016/blog/793', ip='127.0.0.1', classMethod='com.zyc.myblog.web.IndexController.goBlog', args=[{}, 793, org.apache.catalina.session.StandardSessionFacade@49f25d99]}
+2021-12-23 22:02:36.123  INFO 10072 --- [http-nio-20016-exec-2] com.zyc.myblog.aspect.LogAspect          : Result:blog
+2021-12-23 22:02:38.972  INFO 10072 --- [http-nio-20016-exec-7] com.zyc.myblog.aspect.LogAspect          : Request:{url='http://127.0.0.1:20016/blog/comments/793', ip='127.0.0.1', classMethod='com.zyc.myblog.web.CommentController.comments', args=[793, {}, org.apache.catalina.session.StandardSessionFacade@49f25d99]}
+2021-12-23 22:02:38.986  INFO 10072 --- [http-nio-20016-exec-7] com.zyc.myblog.aspect.LogAspect          : Result:blog::commentList

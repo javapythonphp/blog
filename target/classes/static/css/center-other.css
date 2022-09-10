@@ -1,0 +1,202 @@
+/*右边button*/
+.right-button{
+    height:45px;
+    width:45px;
+    position: absolute;
+    top:20px;
+    right:20px;
+    background-color: rgba(255,255,255,0);
+    background-image: url("button2.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border: 0;
+    outline: none;
+    transition: all 0.8s;
+    cursor: pointer;
+    transform:rotate(0deg);
+    z-index: 9999999;
+}
+.right-button.trans{
+    transform: rotate(720deg);
+}
+
+
+
+/*右边最大div*/
+.center-other{
+    margin:auto;
+    position: absolute;
+    width: 440px;
+    left:1870px;
+    border:2px solid #B3B3B3;
+    border-radius: 10px;
+    box-shadow:inset 0px 0px 80px #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition:all 0.8s;
+    display: none;
+}
+.center-other.trans{
+    transform: translate(-150%,0);
+}
+
+/*大框*/
+.center-other .top-types{
+    width:420px;
+    border:1px solid #fff;
+    border-radius: 8px;
+    box-shadow: inset 0 0 8px #fff;
+
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:0.1px;
+
+    background: rgba(252,157,154,0.3);
+}
+/*头部*/
+.top-types .top-types-head{
+    width:100%;
+    border-bottom: 2px solid #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding:20px;
+}
+.top-types .top-types-head>span {
+    font-size: 25px;
+    font-weight: bold;
+}
+.top-types .top-types-head>a{
+    font-size: 20px;
+}
+/*小框*/
+.top-types .top-type-container{
+    width:360px;
+    margin-top:8px;
+    margin-bottom: 8px;
+    border:2px solid #fff;
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(131,175,155,0.45);
+}
+/*小框链接*/
+.top-types .top-type-container>a{
+    width:80%;
+    display: flex;
+    justify-content:space-between;
+    padding:5px;
+    align-items: center;
+}
+.top-types .top-type-container>a>span{
+    font-size: 20px;
+    font-family: "Meiryo UI", "Microsoft YaHei", "Malgun Gothic", "Segoe UI", "Trebuchet MS", Helvetica, "Monaco", monospace, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif;
+    font-weight: bold;
+
+}
+
+
+/*大框*/
+.center-other .top-tags{
+    width:420px;
+    border:1px solid #fff;
+    border-radius: 8px;
+    box-shadow: inset 0 0 8px #fff;
+
+    box-sizing: border-box;
+    margin-top: 35px;
+
+    background: rgba(249,205,173,0.45);
+}
+/*头部*/
+.top-tags .top-tags-head{
+    width:100%;
+    border-bottom: 2px solid #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding:20px;
+}
+.top-tags .top-tags-head>span {
+    font-size: 25px;
+    font-weight: bold;
+}
+.top-tags .top-tags-head>a{
+    font-size: 20px;
+}
+/*装标签的大框*/
+.top-tags .top-tag-container{
+    width:100%;
+    box-sizing:border-box;
+    padding:20px;
+}
+/*链接*/
+.top-tags .top-tag-container>a{
+    margin:30px;
+}
+.top-tags .top-tag-container>a>span{
+    font-size: 18px;
+}
+
+
+/*大框*/
+.center-other .top-recommend{
+    width:420px;
+    border:1px solid #fff;
+    border-radius: 8px;
+    box-shadow: inset 0 0 8px #fff;
+
+    box-sizing: border-box;
+    margin-top: 35px;
+
+    background: rgba(225,223,220,0.45);
+}
+/*头部*/
+.top-recommend .top-recommend-head{
+    width:100%;
+    border-bottom: 2px solid #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding:20px;
+}
+.top-recommend .top-recommend-head>span {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/*小框*/
+.top-recommend .top-recommend-container{
+    width:100%;
+    border-bottom:2px solid #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    padding:8px 0px;
+}
+/*小框链接*/
+.top-recommend .top-recommend-container>a{
+    width:95%;
+    display: flex;
+    align-items: center;
+}
+.top-recommend .top-recommend-container>a>span{
+    line-height:26px;
+    font-size: 20px;
+    font-family: "Meiryo UI", "Microsoft YaHei", "Malgun Gothic", "Segoe UI", "Trebuchet MS", Helvetica, "Monaco", monospace, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif;
+    color:rgba(255,255,255,0.7);
+
+}
+

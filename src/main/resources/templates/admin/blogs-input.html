@@ -1,0 +1,294 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace = "admin/_fragments :: head(~{::title})">
+
+<title>change blog</title>
+
+</head>
+<!--index独有样式-->
+<link rel="stylesheet" href="../static/css/index-m-center.css" th:href="@{/css/index-m-center.css}">
+<link rel="stylesheet" href="../../static/lib/editormd/css/editormd.css" th:href="@{/lib/editormd/css/editormd.css}">
+<style>
+	body::-webkit-scrollbar {/*滚动条整体样式*/
+		width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+		height: 4px;
+	}
+	body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+		border-radius: 50%;
+		-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+		background:#0066A7;
+	}
+	body::-webkit-scrollbar-track {/*滚动条里面轨道*/
+		-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+		border-radius: 0;
+		background: rgba(0,0,0,0.1);
+	}	
+	*{
+		margin:0;
+		padding:0;
+    }
+	
+</style>	
+	
+
+
+<body>
+
+<img  src="#" id="img" th:src="@{https://i0.hdslb.com/bfs/album/e7043be999b9e1883c82255f2ca38efbb2050ed7.png}" style="position: fixed;z-index: -999999999999;left:0;right:0;height:1080px;transition: all 5s;" alt="">
+
+    <div th:replace="admin/_fragments :: imgs">
+
+	</div>
+
+
+	<!---右键点击---->
+	<div  th:replace="admin/_fragments :: GalDown">
+
+	</div>
+
+
+	<!--左边部分-->
+	<div th:replace="admin/_fragments :: LeftMenu">
+
+	</div>
+	<button class="side-button"></button>
+
+    <!--头部-->
+	<header>
+        <div th:replace="admin/_fragments :: HeadNav">
+
+		</div>
+	</header>
+
+
+
+
+	<session>
+	  <div class="m-center animated fadeInUp">
+
+		  <div id="input-container"  style="width:1600px;background: rgba(255,255,255,0.4);padding:0.1px;border-radius:10px;">
+
+			  <div class="ui container" style="margin-top:20px;margin-bottom: 20px;opacity:0.85;width:100%;">
+				  <form id="blog-form" action="#" th:action="*{id}==null?@{/admin/blogs-sub}:@{/admin/blogs-sub/{id}(id=*{id})}" th:object="${changeBlog}" method="post" class="ui form">
+					  <div class="required field">
+						  <div class="ui left labeled input">
+							  <input id="title" type="text" name="title" placeholder="标题" th:value="*{title}">
+						  </div>
+					  </div>
+
+					  <div class="field">
+						  <div id="md-content" style="z-index: 1 !important">
+								<textarea name="content" style="display:none;" placeholder="博客内容" th:text="*{content}">
+				                </textarea>
+						  </div>
+					  </div>
+
+					  <div class="field">
+						  <div class="ui selection dropdown">
+							  <input type="hidden" name="type.id" th:value="*{type}==null?null:*{type.id}">
+							  <i class="dropdown icon"></i>
+							  <div class="default text">分类</div>
+							  <div class="menu">
+								  <div th:each="type :${types}" th:text="${type.name}" th:data-value="${type.id}" class="item" data-value="1">错误日志</div>
+							  </div>
+						  </div>
+					  </div>
+
+					  <div class="filed" style="margin-bottom: 10px">
+						  <div class="ui fluid search selection dropdown">
+							  <input type="hidden" name="column.id" th:value="*{column}==null?null:*{column.id}">
+							  <i class="dropdown icon"></i>
+							  <div class="default text">选择专栏</div>
+							  <div class="menu">
+								  <div th:each="column :${columns}" th:text="${column.title}" th:data-value="${column.id}" class="item" data-value="1">错误日志</div>
+							  </div>
+						  </div>
+					  </div>
+
+
+					  <div class="ui fluid multiple search selection dropdown">
+						  <input type="hidden" name="tagIds" th:value="*{tagIds}">
+						  <i class="dropdown icon"></i>
+						  <div class="default text">选择标签</div>
+						  <div class="menu">
+							  <div class="item" data-value="af" th:each="tag:${tags}" th:text="${tag.name}" th:data-value="${tag.id}">Afghanistan</div>
+						  </div>
+					  </div>
+
+					  <div class="filed">
+						  <div class="ui left fluid labeled input">
+							  <label class="ui teal basic label">首图</label>
+							  <input type="text" name="firstPicture" placeholder="首图引用地址" th:value="*{firstPicture}">
+						  </div>
+					  </div>
+
+					  <div class="inline fields">
+						  <div class="field">
+							  <div class="ui checkbox">
+								  <input type="checkbox" id="recommend" name="recommend" th:checked="*{recommend}" class="hidden">
+								  <label for="recommend">推荐</label>
+							  </div>
+						  </div>
+
+
+					  </div>
+
+					  <div class="field">
+							<textarea name="description" placeholder="博客内容" th:text="*{description}">
+							</textarea>
+					  </div>
+
+					  <div class="ui right aligned container">
+						  <button type="button" class="ui button" onClick="window.history.go(-1)">返回</button>
+						  <button type="button" id="publish-btn" class="ui teal button">发布</button>
+					  </div>
+				  </form>
+			  </div>
+
+
+		  </div>
+
+
+
+	  </div>
+	</session>
+
+
+
+	<footer>
+         <div th:replace="admin/_fragments :: Bottom">
+
+		 </div>
+	</footer>
+	
+	<!--回到顶部-->
+    <div  class="ui vertical icon buttons" style="position: fixed;bottom: 0;right:0;padding:10px">
+		<a href="#" id="toTop" class="ui white button"><i class="chevron up icon"></i></a>
+	</div>
+
+
+<script>var isIndex = 1;</script>
+<script src="../static/js/jquery-2.1.3.min.js" th:src="@{/js/jquery-2.1.3.min.js}"></script>
+<script src="../static/js/side-js.js" th:src="@{/js/side-js.js}"></script>
+<script src="../static/js/m-background.js" th:src="@{/js/m-background.js}"></script>
+<script src="../static/js/m-GalDown.js" th:src="@{/js/m-GalDown.js}"></script>
+<script src="../static/js/isotope.pkgd.min.js" th:src="@{/js/isotope.pkgd.min.js}"></script>
+<script src="../static/js/isotype-filter.js" th:src="@{/js/isotype-filter.js}"></script>
+<script src="../static/js/m-header.js" th:src="@{/js/m-header.js}"></script>
+<script src="../static/js/m-center.js" th:src="@{/js/m-center.js}"></script>
+<script src="../static/js/m-footer.js" th:src="@{/js/m-footer.js}"></script>
+<!--独有js-->	
+<script src="../static/js/index-m-center.js" th:src="@{/js/index-m-center.js}"></script>
+<!--semantic-->
+<script src="" th:src="@{/semantic/semantic.js}"></script>
+<!--平滑滚动-->
+<script src="../static/lib/jquery.scrollTo-master/jquery.scrollTo-master/jquery.scrollTo.js"></script>
+<script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
+<!--编辑器-->
+<script>
+	var contentEditor;
+
+	$(function() {
+		/*md-content是textarea外层div*/
+		contentEditor = editormd("md-content", {
+			width   : "100%",
+			height  : 640,
+			syncScrolling : "single",
+			path    : "/lib/editormd/lib/"
+		});
+		/*
+        // or
+        testEditor = editormd({
+            id      : "test-editormd",
+            width   : "90%",
+            height  : 640,
+            path    : "../lib/"
+        });
+        */
+	$("#save-btn").click(function(){
+		if($("#title").val()==""){
+			alert("输入标题")
+		}else {
+			$("[name='published']").val(false);
+			$("#blog-form").submit();
+		}
+	});
+	$("#save-btn").click(function(){
+		if($("#title").val()==""){
+			alert("输入标题")
+		}else {
+			$("[name='published']").val(true);
+			$("#blog-form").submit();
+		}
+	});
+	});
+
+	$("#publish-btn").click(function(){
+		if($("#title").val()==""){
+			alert("输入标题")
+		}else{
+			$("#blog-form").submit();
+		}
+	})
+</script>
+<script>
+	$(document).ready(function(){
+		$(".menu.toggle").click(function(){
+			$(".m-item").toggleClass("m-mobile-hide");
+		});
+		$(".ui.dropdown").dropdown({
+			on:'hover'
+		});
+		$(".ui.form").form({
+			fields:{
+				title:{
+					identitier:"title",
+					rules:[{
+						type:'empty',
+						prompt:'标题:输入博客标题'
+					}]
+				}
+			}
+		});
+	})
+
+</script>
+<script>
+  	$len1 = $(".center-container").css("height")
+	$(".m-center").css("min-height",$len1)
+</script>
+<script>
+   $(document).ready(function(){
+	    $toTop =  $("#toTop");
+	    $toTop.click(function(){
+		   $(window).scrollTo(0,500);
+	    })
+
+	    $len = $toTop.offset().top;
+		  if($len>1100){
+			  $toTop.css({"display":"block"})
+		  }else{
+			  $toTop.css({"display":"none"})
+		  }
+
+	  $(window).scroll(function(){
+		  $len = $toTop.offset().top;
+		  if($len>1100){
+			  $toTop.css({"display":"block"})
+		  }else{
+			  $toTop.css({"display":"none"})
+		  }
+	  })
+
+
+   })
+</script>
+<script>
+	var x = document.getElementById("xxx");
+	x.onclick = function(){
+		alert(x.getAttribute("class"));
+	}
+
+</script>
+</body>
+</html>

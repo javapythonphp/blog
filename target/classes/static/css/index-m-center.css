@@ -1,0 +1,285 @@
+@charset "utf-8";
+/* CSS Document */
+/*index导航栏*/
+.m-center .center-nav{
+	position: relative;
+	height:60px;
+	width:1200px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	box-shadow:inset 0px 0px 80px #fff;
+	border-radius: 30px;
+	background: rgba(0,0,0,0.2)
+}
+
+.m-center .center-nav a{
+	font-family:Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif";
+	font-size:30px;
+	font-weight: 600;
+	text-decoration: none;
+	color:antiquewhite;
+	transition:all 0.4s;
+	height:45px;
+	position: relative;
+	top:10px;
+}
+
+.m-center .center-nav a:nth-child(1):hover{
+	transform: rotate(10deg);
+	letter-spacing: 5px;
+}
+.m-center .center-nav a:nth-child(1):before{
+	content: "";
+	background: url("../../static/images/center-nav/1.png");
+	position:absolute;
+	height:55px;
+	width:55px;
+	background-size: 55px;
+	transform: translate(-100%,-16px);
+	background-repeat: no-repeat;
+
+}
+
+.m-center .center-nav a:nth-child(2):hover{
+	transform: rotate(10deg);
+	letter-spacing: 5px;
+}
+.m-center .center-nav a:nth-child(2):before{
+	content: "";
+	background: url("../../static/images/center-nav/2.png");
+	position:absolute;
+	height:55px;
+	width:55px;
+	background-size: 55px;
+	transform: translate(-100%,-16px);
+	background-repeat: no-repeat;
+}
+
+.m-center .center-nav a:nth-child(3):hover{
+	transform: rotate(10deg);
+	letter-spacing: 5px;
+}
+.m-center .center-nav a:nth-child(3):before{
+	content: "";
+	background: url("../../static/images/center-nav/3.png");
+	position:absolute;
+	height:55px;
+	width:55px;
+	background-size: 55px;
+	transform: translate(-100%,-16px);
+	background-repeat: no-repeat;
+}
+
+.m-center .center-nav a:nth-child(4):hover{
+	transform: rotate(10deg);
+	letter-spacing: 5px;
+}
+.m-center .center-nav a:nth-child(4):before{
+	content: "";
+	background: url("../../static/images/center-nav/4.png");
+	position:absolute;
+	height:55px;
+	width:55px;
+	background-size: 55px;
+	transform: translate(-100%,-10px);
+	background-repeat: no-repeat;
+}
+
+.m-center .center-nav a:nth-child(5):hover{
+	transform: rotate(10deg);
+	letter-spacing: 5px;
+}
+.m-center .center-nav a:nth-child(5):before{
+	content: "";
+	background: url("../../static/images/center-nav/5.png");
+	position:absolute;
+	height:55px;
+	width:55px;
+	background-size: 55px;
+	transform: translate(-100%,-16px);
+}
+
+.m-center .center-nav a:nth-child(6):hover{
+	transform: rotate(10deg);
+	letter-spacing: 5px;
+}
+.m-center .center-nav a:nth-child(6):before{
+	content: "";
+	background: url("../../static/images/center-nav/6.png");
+	position:absolute;
+	height:55px;
+	width:55px;
+	background-size: 55px;
+	transform: translate(-100%,-16px);
+	background-repeat: no-repeat;
+}
+
+
+
+
+/*index页主内容*/
+/*头部*/
+.center-index-container .index-container-head{
+	width:100%;
+	height:70px;
+	background: rgba(255,255,255,0.5);
+	border-radius: 20px;
+
+	box-sizing: border-box;
+	padding:0 30px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+/*主内容*/
+.m-center .center-index-container{
+	padding:0.1px;
+	width:1200px;
+	background: rgba(255,255,255,0.3);
+	margin-top: 20px;
+	border-radius: 20px;
+}
+
+#allPageIndex{
+	transform: translate(-49%,0);
+}
+.index-container-page{
+	transform: translate(50%,0);
+}
+.center-index-container .index-content{
+	position: relative;
+	left:50%;
+	margin-top: 40px;
+	width:1170px;
+	height:370px;
+	background: rgba(255,255,255,0.5);
+	border-radius: 10px;
+	opacity: 0;
+}
+.center-index-container .index-content.index-content-trans{
+	animation: flipInX 1s forwards;
+}
+
+@keyframes flipInX
+        {0%{transform:perspective(1000px) rotateX(90deg);animation-timing-function:ease-in;opacity:0}
+		40%{transform:perspective(1000px) rotateX(-20deg);animation-timing-function:ease-in}
+	    60%{transform:perspective(1000px) rotateX(10deg);opacity:1}
+	    80%{transform:perspective(1000px) rotateX(-5deg);opacity:1}
+	    to{transform:perspective(0px);opacity:1}}
+
+
+.index-content .content-container{
+	position: absolute;
+	left:5px;
+	top:5px;
+	right:5px;
+	bottom:5px;
+	border-radius: 10px;
+	background: rgba(255,255,255,0.2);
+}
+
+.content-container .content-title{
+	width:100%;
+	height:55px;
+	box-sizing: border-box;
+	padding:10px 20px;
+}
+.content-title>a>h1{
+	margin-left: 10px;
+	font-size: 35px;
+	color:rgba(0,0,0,0.7);
+}
+.content-container .content-main{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	position:absolute;
+	left:0px;
+	right:0px;
+	top:55px;
+	bottom:0px;
+}
+.content-container .content-backImg>img{
+	opacity: 0.65;
+	width:120%;
+	transform: scale(1.35);
+	filter: blur(12px);
+	transition: all 0.4s;
+}
+.content-container .content-backImg>img.trans{
+	opacity: 0.9;
+	filter:blur(2px);
+	transform: scale(1);
+
+}
+
+.content-main .left-img{
+	height:250px;
+	width:400px;
+	border:2px solid #fff;
+	overflow:hidden;
+	border-radius: 15px;
+	box-shadow: inset 0px 0px 6px #fff;
+}
+.content-main .left-img>img{
+	height:100%;
+	width:100%;
+	object-fit: cover;
+}
+.content-main .content-right{
+	height:250px;
+	width:690px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+.content-right .right-top{
+	height:170px;
+	width:100%;
+	word-wrap: break-word;word-break: break-all;overflow: hidden;
+}
+.content-right .right-top>p{
+	font-size: 26px;
+	line-height: 40px;
+	letter-spacing: 6px;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	color:rgba(55,55,55,0.8);
+}
+.content-right .right-bottom{
+	height:40px;
+	width:100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.right-bottom div{
+	font-size: 20px;
+	padding: 8px 14px;
+	border:1px solid grey;
+	border-radius: 16px;
+
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	color:rgba(55,55,55,0.8);
+}
+
+/*底部翻页*/
+.center-index-container .index-container-page{
+	width:100%;
+	margin-top: 20px;
+	height:100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(122,122,122,0.3);
+	border-radius: 20px;
+}
+
+.m-center a{
+	text-decoration: none;
+}
+
+

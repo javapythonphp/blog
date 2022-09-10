@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>登录界面</title>
+    <meta charset="utf-8">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+<link rel="stylesheet" th:href="@{/login/css.css}"/>
+  </head>
+  <body>
+        <img src="" th:src="@{${backImg.url}}" style="position:absolute;height:1080px;width:1920px">
+      	<form id="form1" name="form1" th:action="@{/admin/login}" method="post">
+     		<fieldset style="border:3px solid #fff;border-radius: 30px">
+                <legend style="color:#fff;font-size: 45px;font-weight: 600;font-family: AIGDT;">博客系统</legend>
+                <input class=input_1 id=username size=15  name="username" v-model="user.username"  placeholder=用户名><br><br>
+                <input class=input_1 id=password size=15  name="password" v-model="user.password"  placeholder=密码><br><br>
+                <input class=input_3 type="button" v-on:click="loginByVue()" v-bind:value="login" />
+                <input class=input_3 type="button" onclick=document.form1.reset()  v-bind:value="reset" />
+            </fieldset>
+            <div style="position:absolute;height:50px;width:300px;left:50%;transform:translate(-50%,0);font-size:30px;
+                  font-width:600;color:red;" th:text="${message}"></div>
+     	</form>
+        <script type="text/javascript" th:src="@{/login/script.js}"></script>
+        <script type="text/javascript" th:src="@{/js/vue.js}"></script>
+        <script>
+            const form = new Vue({
+                el:"#form1",
+                data:{
+                    login:"登录",
+                    reset:"重置",
+                    user:{
+                        username:"",
+                        password:""
+                    }
+                },
+                methods:{
+                    loginByVue(){
+                        if(this.user.username==''){
+                            alert('用户名不能为空！');
+                            return false;
+                        }
+                        if(this.user.password==''){
+                            alert('密码不能为空！');
+                            return false;
+                        }
+                        document.getElementById("form1").submit();x
+                    }
+                }
+            })
+        </script>
+  </body>
+</html>

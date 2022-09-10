@@ -1,0 +1,308 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
+    <title>blog</title>
+</head>
+<link rel="stylesheet" href="../static/css/blog-m-center.css" th:href="@{/css/blog-m-center.css}">
+
+<style>
+    body::-webkit-scrollbar {/*滚动条整体样式*/
+        width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+        height: 4px;
+    }
+    body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        background:#0066A7;
+    }
+    body::-webkit-scrollbar-track {/*滚动条里面轨道*/
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        border-radius: 0;
+        background: rgba(0,0,0,0.1);
+    }
+    *{
+        margin:0;
+        padding:0;
+    }
+
+</style>
+
+
+
+<body>
+
+<div th:replace="_fragments :: page-cover">
+
+</div>
+
+<img  src="#" id="img" th:src="@{https://i0.hdslb.com/bfs/album/e7043be999b9e1883c82255f2ca38efbb2050ed7.png}" style="position: fixed;z-index: -999999999999;left:0;right:0;height:1080px;transition: all 5s;" alt="">
+
+        <div th:replace="_fragments :: imgs">
+
+        </div>
+
+
+        <!---右键点击---->
+        <div  th:replace="_fragments :: GalDown">
+
+        </div>
+
+		<!--看板娘-->
+		<div th:replace="_fragments :: kbn">
+
+		</div>
+
+        <!--左边部分-->
+        <div th:replace="_fragments :: LeftMenu">
+
+        </div>
+        <button class="side-button"></button>
+
+        <!--头部-->
+        <header>
+            <div th:replace="_fragments :: HeadNav">
+
+            </div>
+        </header>
+
+
+
+	<session>           <!--animated fadeInUp动画效果-->
+	  <div class="m-center animated fadeInUp">
+
+          <div th:replace="_fragments :: RightMenu">
+
+          </div>
+
+          <div th:replace="_fragments :: RightMenu2">
+
+          </div>
+		 <!--中间左边部分-->
+	     <div class="blog-m-center" id="blog-m-center">
+			<!--头标题+图片-->
+			<div class="blog-m-center-header" id="blog-m-center-header">
+			       <div class="blog-m-center-header-title">
+					   <div class="user icon"><i class="user icon"></i><span th:text="${blog.user.nickname}">one</span></div>
+					   <div class="create-time"><i class="calendar alternate icon"></i><span>发布:</span><span th:text="${#dates.format(blog.creatTime,'yyyy-MM-dd HH:mm')}"></span></div>
+					   <div class="create-time"><i class="calendar alternate icon"></i><span>更新:</span><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd HH:mm')}"></span></div>
+					   <div class="views icon"><i class="eye icon"></i><span th:text="${blog.views}">46</span></div>
+					   <div class="comment-count"><i class="comment alternate icon"></i><span th:text="${#arrays.length(blog.comments)}">aaa</span></div>
+				   </div>
+				   <img src="../static/images/blog-m-center/title.png" alt="" th:src="@{${blog.firstPicture}}">
+				   <div class="blog-m-center-header-tags">
+					   <div class="ui basic teal top pointing label"  th:text="${blog.type.name}"></div>
+					   <div>
+						   <div class="ui basic teal top pointing label" th:each="tag:${blog.tags}" th:text="${tag.name}"></div>
+					   </div>
+					   <div class="ui basic teal top pointing label" th:text="${blog.column.id==0}?none:${blog.column.title}"></div>
+				   </div>
+
+			</div>
+            <!--主内容-->
+			<div class="blog-m-center-content mr-font" id="blog-m-center-content" th:utext="${blog.content}">
+
+
+			</div>
+			<!--打赏-->
+			<div class="blog-m-center-money">
+			     <div>
+				     打赏
+				 </div>
+			</div>
+			 <!--评论-->
+			<div class="blog-m-center-comment" id="blog-m-center-comment">
+
+				   <div id="comment-container" class="ui threaded comments" style="margin:10px">
+
+					   <div th:fragment="commentList">
+						   <span style="font-size: 20px;color:red;position: absolute" th:text="${error}"></span>
+						   <h3 class="ui dividing header">Comments</h3>
+						   <div class="comment" th:each="comment:${comments}">
+							   <a class="avatar" th:href="@{${comment.userpage}}" target="_blank" style="transform: scale(1.2)">
+								   <img src="../images/avatar/small/matt.jpg" th:src="${comment.avatar}">
+							   </a>
+							   <div class="content">
+								   <a class="author" th:href="@{${comment.userpage}}" target="_blank">
+									   <span th:text="${comment.nickname}">Matt</span>
+									   <div class="ui mini basic teal left pointing label" th:if="${comment.uid}==336562191" style="padding:1px;">管理员</div>
+								   </a>
+								   <div class="metadata">
+									   <span class="date" th:text="${#dates.format(comment.creatTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
+								   </div>
+								   <div class="text" th:text="${comment.content}">
+									   How artistic!
+								   </div>
+								   <div class="actions" th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}" data-commentid="1" data-commentnickname="Matt" onclick="reply(this)">
+									   <a class="reply">Reply</a>
+								   </div>
+								   <div class="actions" th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}"  th:if="${user}" onclick="deleteReply(this)">
+									   <a class="delete">detele</a>
+								   </div>
+							   </div>
+
+
+							   <div class="comments" th:if="${#arrays.length(comment.replyComments)}>0">
+
+								   <div class="comment" th:each="reply:${comment.replyComments}">
+									   <a class="avatar" th:href="@{${reply.userpage}}">
+										   <img src="../images/avatar/small/matt.jpg" th:src="@{${reply.avatar}}">
+									   </a>
+									   <div class="content">
+										   <a class="author" th:href="@{${reply.userpage}}">
+											   <span th:text="${reply.nickname}">Matt</span><span style="color:aqua">:@</span><span th:text="${reply.parentComment.nickname}" style="color:aqua;">xxx</span>
+										   </a>
+										   <div class="metadata">
+											   <span class="date" th:text="${#dates.format(reply.creatTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
+										   </div>
+										   <div class="text" th:text="${reply.content}">
+											   How artistic!
+										   </div>
+										   <div class="actions" th:attr="data-commentid=${reply.id},data-commentnickname=${reply.nickname}" data-commentid="1" data-commentnickname="Matt" onclick="reply(this)">
+											   <a class="reply">Reply</a>
+										   </div>
+										   <div class="actions" th:attr="data-commentid=${reply.id},data-commentnickname=${reply.nickname}" th:if="${user}" onclick="deleteReply(this)">
+											   <a class="delete">detele</a>
+										   </div>
+									   </div>
+
+								   </div>
+							   </div>
+
+
+						   </div>
+					   </div>
+				   </div>
+
+						  <form id="comment-form" class="ui reply form">
+							  <input  type="hidden" name="blog.id" th:value="${blog.id}">
+							  <input type="hidden" name="parentComment.id" th:value="-1">
+							<div class="field">
+							  <textarea name="content" id="comment-input"></textarea>
+							</div>
+							  <div class="ui left icon input">
+									<i class="user icon"></i>
+								  <input id="comment-name" type="text" name="uid" placeholder="bilibili UID">
+							  </div>
+							  <div class="ui left icon input">
+								  <i class="user icon"></i>
+								  <input id="comment-email" type="text" name="email" placeholder="邮箱">
+							  </div>
+							<button type="button" id="commentpost-btn" class="ui button teal m-mobile-wide">
+								<i class="icon edit"></i> Add Reply
+							</button>
+						  </form>
+
+
+
+				</div>
+		 </div>
+	  </div>
+	</session>
+  
+	
+	
+	<footer>
+        <div th:replace="_fragments :: Bottom">
+
+        </div>
+	</footer>
+	
+	<div  class="ui vertical icon buttons" style="position: fixed;bottom: 0;right:0;padding:10px">
+		<a href="#" id="toTop" class="ui white button"><i class="chevron up icon"></i></a>
+	</div>
+<script>var isIndex = 0;</script>
+    <script th:src="@{/js/center-other.js}"></script>
+    <script th:src="@{/js/MusicPlayer.js}"></script>
+    <script src="../static/js/jquery-2.1.3.min.js" th:src="@{/js/jquery-2.1.3.min.js}"></script>
+    <script src="../static/js/side-js.js" th:src="@{/js/side-js.js}"></script>
+    <script src="../static/js/m-background.js" th:src="@{/js/m-background.js}"></script>
+    <script src="../static/js/m-GalDown.js" th:src="@{/js/m-GalDown.js}"></script>
+    <script src="../static/js/isotope.pkgd.min.js" th:src="@{/js/isotope.pkgd.min.js}"></script>
+    <script src="../static/js/isotype-filter.js" th:src="@{/js/isotype-filter.js}"></script>
+    <script src="../static/js/m-header.js" th:src="@{/js/m-header.js}"></script>
+    <script src="../static/js/m-center.js" th:src="@{/js/m-center.js}"></script>
+    <script src="../static/js/m-footer.js" th:src="@{/js/m-footer.js}"></script>
+	<script src="../static/js/vueResouce.js" th:src="@{/js/vueResouce.js}"></script>
+    <!--semantic-->
+<script src="" th:src="@{/semantic/semantic.js}"></script>
+    <!--平滑滚动-->
+<script src="../static/lib/jquery.scrollTo-master/jquery.scrollTo-master/jquery.scrollTo.js"></script>
+<!--看板娘-->
+<script src="assets/waifu-tips.js" th:src="@{/assets/waifu-tips.js}"></script>
+<script src="assets/live2d.js" th:src="@{/assets/live2d.js}"></script>
+<script type="text/javascript">initModel("assets/")</script>
+<script>
+  	setTimeout(function(){
+		$len1 = $(".center-other").css("height")
+		$(".m-center").css("min-height",$len1)
+	},500);
+</script>
+<!--专栏详情翻页-->
+<script>
+	function sendcolumnTitle(){
+		$("#columns").load("/index/column-search",{
+			columnTitle:$("#columnTitleValue").val()
+		});
+	}
+</script>
+<script>
+	/*初始化评论*/
+
+	$("#comment-container").load("[[@{/blog/comments/{id}(id=${blog.id})}]]")
+
+
+	$("#commentpost-btn").click(function(){
+		if($("#comment-name").val()!=""&&$("#comment-email").val()!=""&&$("#comment-input").val()!=""){
+			postData()
+		}else{
+			alert("error")
+		}
+	});
+
+	function postData(){
+		$("#comment-container").load("/blog/comments",{
+			"parentComment.id":$("[name='parentComment.id']").val(),
+			"blog.id":$("[name='blog.id']").val(),
+			"uid":$("[name='uid']").val(),
+			"email":$("[name='email']").val(),
+			"content":$("[name='content']").val()
+		})
+		$(window).scrollTo($("#comment-container"),500);
+		clearContent();
+
+	}
+
+
+	function clearContent(){
+		$("[name='content']").val("");
+		$("[name='parentComment.id']").val(-1);
+		$("[name='content']").attr("placeholder","输入评论信息...");
+	}
+
+	function reply(obj){
+		var commentId = $(obj).data("commentid");
+		var commentNickname = $(obj).data("commentnickname");
+		$("[name='content']").attr("placeholder","@"+commentNickname).focus();
+		$("[name='parentComment.id']").val(commentId);
+		$(window).scrollTo($("#comment-form"),500);
+	}
+
+	function deleteReply(obj){
+		var commentId = $(obj).data("commentid");
+
+		$("#comment-container").load("/blog/comments/delete",{
+			"id":commentId,
+			"blog.id":$("[name='blog.id']").val(),
+		})
+		$(window).scrollTo($("#comment-container"),500);
+		clearContent();
+	}
+
+</script>
+<script th:src="@{/js/bottom-messages.js}"></script>
+<style>
+
+
+</style>
+</body>
+</html>

@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head th:fragment="head(title)">
+        <meta name="referrer" content="never">
+    <meta charset="utf-8">
+    <title th:replace="${title}">aaa</title>
+    <link rel="stylesheet" th:href="@{/css/MusicPlayer.css}">
+    <link href="../static/css/side-css.css" rel="stylesheet" th:href="@{/css/side-css.css}">
+    <link href="../static/css/m-background.css" rel="stylesheet" th:href="@{/css/m-background.css}">
+    <link href="../static/css/m-GalDown.css" rel="stylesheet" th:href="@{/css/m-GalDown.css}">
+    <link href="../static/css/m-center.css" rel="stylesheet" th:href="@{/css/m-center.css}">
+    <link href="../static/css/m-header.css" rel="stylesheet" th:href="@{/css/m-header.css}">
+    <link href="../static/css/m-footer.css" rel="stylesheet" th:href="@{/css/m-footer.css}">
+    <link rel="stylesheet" th:href="@{/css/center-other.css}">
+    <!--外部引用样式-->
+    <link href="../static/lib/typo/typo.css" rel="stylesheet" th:href="@{/lib/typo/typo.css}">
+    <link href="../static/lib/animate/animate.css" rel="stylesheet" th:href="@{/lib/animate/animate.css}">
+    <!--semantic-->
+    <link rel="stylesheet" href=""
+          th:href="@{/semantic/semantic.css}">
+    <!--文字-->
+    <link rel="stylesheet" th:href="@{/css/m-font.css}">
+    <!--kbn-->
+    <link rel="stylesheet" type="text/css" href="assets/waifu.css" th:href="@{/assets/waifu.css}"/>
+    <link rel="stylesheet" type="text/css" href="assets/waifu.css" th:href="@{/assets/waifu.css}"/>
+    <link rel="stylesheet" type="text/css" href="assets/waifu.css" th:href="@{/assets/waifu.css}"/>
+    <!--加载页面-->
+    <link rel="stylesheet" type="text/css" href="/css/page-cover.css" th:href="@{/css/page-cover.css}">
+    <!--响应布局-->
+     <link href="../static/css/changeWidth.css" rel="stylesheet" th:href="@{/css/changeWidth.css}">
+    <!--动画-->
+        <link href="" th:href="@{/css/animate.css}">
+    </head>
+<body>
+
+<div th:fragment="page-cover" class="load-animation">
+    <img src=""     alt="">
+    <div class="load">
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar"></div>
+            </div>
+        </div>
+        <div class="sure-center">
+            <div>
+                <div class="firstBar"></div>
+                <div class="secondBar">	</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div th:fragment="imgs">
+
+      <img th:each="imgFlow:${imgFlows}" th:src="@{${imgFlow.url}}" alt="" class="m-background" style="display: none;opacity: 0">
+
+  </div>
+
+  <div th:fragment="kbn" class="waifu">
+      <div class="waifu-tips"></div>
+      <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+      <div class="waifu-tool">
+          <span class="fui-home"></span>
+          <span class="fui-chat"></span>
+          <span class="fui-eye"></span>
+          <span class="fui-user"></span>
+          <span class="fui-photo"></span>
+          <span class="fui-info-circle"></span>
+          <span class="fui-cross"></span>
+      </div>
+  </div>
+
+      <div class="m-header" th:fragment="HeadNav">
+          <div class="head-containner">
+              <div class="m-title">
+                  <a><p>Blog</p></a>
+              </div>
+              <div id="filters">
+                  <button class="header-button" data-filter=".type-computer">计算机</button>
+                  <button class="header-button" data-filter=".type-acg">ACG</button>
+                  <button class="header-button" data-filter=".type-hobby">兴趣</button>
+                  <button class="header-button" data-filter=".type-daily">日常</button>
+                  <button class="header-button" data-filter=".type-column">专栏</button>
+                  <button class="header-button" data-filter=".type-nav">导航</button>
+                  <button class="header-button" data-filter=".type-pixiv">P站日榜</button>
+              </div>
+              <form id="search-form"  th:action="@{/index/search}" method="post" name="search" target="_blank">
+                  <div class="ui icon inverted transparent input">
+                      <input type="text" name="query" placeholder="search...">
+                      <i onclick="document.forms['search'].submit()" class="search link icon"></i>
+                  </div>
+              </form>
+              <button class="right-button"></button>
+          </div>
+      </div>
+
+
+
+  <div th:fragment="GalDown" class="m-GalDown">
+      <div class="m-ring">
+          <a href="index.html" th:href="@{/index}" target="_blank" class="m-item">主页</a>
+          <a href="#" th:href="@{/admin}" target="_blank" class="m-item">登录</a>
+          <a href="#" th:href="@{/admin/logout}" class="m-item">注销</a>
+          <a href="#" onclick="window.history.go(-1)" class="m-item">返回</a>
+          <a href="#" th:href="@{/admin/blogs}" target="_blank" class="m-item">博客</a>
+          <a href="#" onclick="history.go(0)" class="m-item">刷新</a>
+      </div>
+  </div>
+
+
+
+
+
+   <div class="m-side" id="m-side" th:fragment="LeftMenu">
+       <img src="../static/images/side-image/11.png" th:src="@{${img0}}" style="position: absolute;z-index: -11;height:1080px;background-position: 200px 200px;">
+       <div class="m-head">
+           <img src="../static/images/side-image/1.png" th:src="@{/images/side-image/1.png} ">
+           <p>开发者:茕丿夜</p>
+       </div>
+       <div class="m-list">
+           <ul>
+               <li><a href="#" th:href="@{/admin}" target="_blank"><img src="../static/images/side-image/2.png" th:src="@{/images/side-image/2.png}" alt=""><p>管理员登录</p></a></li>
+               <li><a href="#" th:href="@{/admin/types}" target="_blank"><img src="../static/images/side-image/3.png" th:src="@{/images/side-image/3.png}" alt=""><p>分类管理</p></a></li>
+               <li><a href="#" th:href="@{/admin/tags}" target="_blank"><img src="../static/images/side-image/4.png" th:src="@{/images/side-image/4.png}" alt=""><p>标签管理</p></a></li>
+               <li><a href="#" th:href="@{/admin/columns}" target="_blank"><img src="../static/images/side-image/5.png" th:src="@{/images/side-image/5.png}" alt=""><p>专栏管理</p></a></li>
+               <li><a href="#" th:href="@{/admin/blogs}" target="_blank"><img src="../static/images/side-image/7.png" th:src="@{/images/side-image/7.png}" alt=""><p>博客管理</p></a></li>
+               <li><a href="#" th:href="@{/admin/imgFlows}" target="_blank"><img src="../static/images/side-image/6.png" th:src="@{/images/side-image/6.png}" alt=""><p>图片流管理</p></a></li>
+               <li><a href="#" th:href="@{/admin/imgSides}" target="_blank"><img src="../static/images/side-image/7.png" th:src="@{/images/side-image/7.png}" alt=""><p>侧图管理</p></a></li>
+               <li><a href="#" th:href="@{/admin/logout}" target="_blank"><img src="../static/images/side-image/7.png" th:src="@{/images/side-image/7.png}" alt=""><p>注销</p></a></li>
+           </ul>
+           <img src="static/images/side-image/wechat.jpg" th:src="@{images/side-image/wechat.jpg}">
+       </div>
+   </div>
+
+
+
+
+  <div class="center-container" id="center-container" th:fragment="RightMenu">
+      <div class="row mt-20 grid">
+          <div class="type-computer">
+              <div class="center-box">
+                  <h2><a href="#" th:href="@{/index/types/530}" target="_blank">前端</a></h2>
+                  <div>
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img3}}">
+                      <div class="show-scroll">
+                          <a target="_blank" th:href="@{/blog/{id}(id=${eachqd.id})}" th:each="eachqd:${qd}">
+                              <span th:text="${eachqd.title}"></span>
+                              <img src="../static/images/center/6.jpg" th:src="@{${eachqd.firstPicture}}" alt="" style="height:100%;border-radius: 15px;">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="type-computer">
+              <div class="center-box">
+                  <h2><a href="#" th:href="@{/index/types/529}" target="_blank">后端</a></h2>
+                  <div>
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img4}}">
+                      <div class="show-scroll">
+                          <a target="_blank" th:href="@{/blog/{id}(id=${eachhd.id})}" th:each="eachhd:${hd}">
+                              <span th:text="${eachhd.title}"></span>
+                              <img src="../static/images/center/6.jpg" th:src="@{${eachhd.firstPicture}}" alt="" style="height:100%;border-radius: 15px;">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="type-computer">
+              <div class="center-box">
+                  <h2><a href="#" th:href="@{/index/types/554}" target="_blank">应用软件</a></h2>
+                  <div>
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img5}}">
+                      <div class="show-scroll">
+                          <a target="_blank" th:href="@{/blog/{id}(id=${eachyyrj.id})}" th:each="eachyyrj:${yyrj}">
+                              <span th:text="${eachyyrj.title}"></span>
+                              <img src="../static/images/center/6.jpg" th:src="@{${eachyyrj.firstPicture}}" alt="" style="height:100%;border-radius: 15px;">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="type-acg">
+              <div class="center-box">
+                  <h2><a href="#" th:href="@{/index/types/532}" target="_blank">动漫</a></h2>
+                  <div>
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img6}}">
+                      <div class="show-scroll">
+                          <a target="_blank" th:href="@{/blog/{id}(id=${eachdm.id})}" th:each="eachdm:${dm}">
+                              <span th:text="${eachdm.title}"></span>
+                              <img src="../static/images/center/6.jpg" th:src="@{${eachdm.firstPicture}}" alt="" style="height:100%;border-radius: 15px;">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="type-acg">
+              <div class="center-box">
+                  <h2><a href="#" th:href="@{/index/types/528}" target="_blank">插画</a></h2>
+                  <div>
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img7}}">
+                      <div class="show-scroll">
+                          <a target="_blank" th:href="@{/blog/{id}(id=${eachch.id})}" th:each="eachch:${ch}">
+                              <span th:text="${eachch.title}"></span>
+                              <img src="../static/images/center/6.jpg" th:src="@{${eachch.firstPicture}}" alt="" style="height:100%;border-radius: 15px;">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="type-acg">
+              <div class="center-box">
+                  <h2><a href="#" th:href="@{/index/types/496}" target="_blank">视觉小说</a></h2>
+                  <div>
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img8}}">
+                      <div class="show-scroll">
+                          <a target="_blank" th:href="@{/blog/{id}(id=${eachsjxs.id})}" th:each="eachsjxs:${sjxs}">
+                              <span th:text="${eachsjxs.title}"></span>
+                              <img src="../static/images/center/6.jpg" th:src="@{${eachsjxs.firstPicture}}" alt="" style="height:100%;border-radius: 15px;">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="type-acg">
+              <div class="center-box">
+                  <h2><a href="#" th:href="@{/index/types/535}" target="_blank">游戏</a></h2>
+                  <div>
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img9}}">
+                      <div class="show-scroll">
+                          <a target="_blank" th:href="@{/blog/{id}(id=${eachyx.id})}" th:each="eachyx:${yx}">
+                              <span th:text="${eachyx.title}"></span>
+                              <img src="../static/images/center/6.jpg" th:src="@{${eachyx.firstPicture}}" alt="" style="height:100%;border-radius: 15px;">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="type-acg">
+              <div class="center-box">
+                  <h2><a href="#" th:href="@{/index/types/533}" target="_blank">音乐</a></h2>
+                  <div>
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img10}}">
+                      <div class="show-scroll">
+                          <a target="_blank" th:href="@{/blog/{id}(id=${eachyy.id})}" th:each="eachyy:${yy}">
+                              <span th:text="${eachyy.title}"></span>
+                              <img src="../static/images/center/6.jpg" th:src="@{${eachyy.firstPicture}}" alt="" style="height:100%;border-radius: 15px;">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="type-hobby">
+              <div class="center-box">
+                  <h2><a href="#" th:href="@{/index/types/600}" target="_blank">段子</a></h2>
+                  <div>
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img11}}">
+                      <div class="show-scroll">
+                          <a target="_blank" th:href="@{/blog/{id}(id=${eachdz.id})}" th:each="eachdz:${dz}">
+                              <span th:text="${eachdz.title}"></span>
+                              <img src="../static/images/center/6.jpg" th:src="@{${eachdz.firstPicture}}" alt="" style="height:100%;border-radius: 15px;">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="type-hobby">
+              <div class="center-box">
+                  <h2><a href="#" th:href="@{/index/types/531}" target="_blank">汽车</a></h2>
+                  <div>
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img12}}">
+                      <div class="show-scroll">
+                          <a target="_blank" th:href="@{/blog/{id}(id=${eachqc.id})}" th:each="eachqc:${qc}">
+                              <span th:text="${eachqc.title}"></span>
+                              <img src="../static/images/center/6.jpg" th:src="@{${eachqc.firstPicture}}" alt="" style="height:100%;border-radius: 15px;">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="type-hobby">
+              <div class="center-box">
+                  <h2><a href="#" th:href="@{/index/types/534}" target="_blank">影视</a></h2>
+                  <div>
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img13}}">
+                      <div class="show-scroll">
+                          <a target="_blank" th:href="@{/blog/{id}(id=${eachys.id})}" th:each="eachys:${ys}">
+                              <span th:text="${eachys.title}"></span>
+                              <img src="../static/images/center/6.jpg" th:src="@{${eachys.firstPicture}}" alt="" style="height:100%;border-radius: 15px;">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="type-hobby">
+              <div class="center-box">
+                  <h2><a href="#" th:href="@{/index/types/545}" target="_blank">日语</a></h2>
+                  <div>
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img14}}">
+                      <div class="show-scroll">
+                          <a target="_blank" th:href="@{/blog/{id}(id=${eachry.id})}" th:each="eachry:${ry}">
+                              <span th:text="${eachry.title}"></span>
+                              <img src="../static/images/center/6.jpg" th:src="@{${eachry.firstPicture}}" alt="" style="height:100%;border-radius: 15px;">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="type-hobby">
+              <div class="center-box">
+                  <h2><a href="#" th:href="@{/index/types/546}" target="_blank">软件</a></h2>
+                  <div>
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img15}}">
+                      <div class="show-scroll">
+                          <a target="_blank" th:href="@{/blog/{id}(id=${eachrj.id})}" th:each="eachrj:${rj}">
+                              <span th:text="${eachrj.title}"></span>
+                              <img src="../static/images/center/6.jpg" th:src="@{${eachrj.firstPicture}}" alt="" style="height:100%;border-radius: 15px;">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="type-hobby">
+              <div class="center-box">
+                  <h2><a href="#" th:href="@{/index/types/539}" target="_blank">学习</a></h2>
+                  <div>
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img16}}">
+                      <div class="show-scroll">
+                          <a target="_blank" th:href="@{/blog/{id}(id=${eachxx.id})}" th:each="eachxx:${xx}">
+                              <span th:text="${eachxx.title}"></span>
+                              <img src="../static/images/center/6.jpg" th:src="@{${eachxx.firstPicture}}" alt="" style="height:100%;border-radius: 15px;">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="type-daily">
+              <div class="center-box">
+                  <h2><a href="#" th:href="@{/index/types/536}" target="_blank">生活</a></h2>
+                  <div>
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img17}}">
+                      <div class="show-scroll">
+                          <a target="_blank" th:href="@{/blog/{id}(id=${eachsh.id})}" th:each="eachsh:${sh}">
+                              <span th:text="${eachsh.title}"></span>
+                              <img src="../static/images/center/6.jpg" th:src="@{${eachsh.firstPicture}}" alt="" style="height:100%;border-radius: 15px;">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="type-daily">
+              <div class="center-box">
+                  <h2><a href="#" th:href="@{/index/types/538}" target="_blank">杂谈</a></h2>
+                  <div>
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/6.jpg" th:src="@{${img18}}">
+                      <div class="show-scroll">
+                          <a target="_blank" th:href="@{/blog/{id}(id=${eachzt.id})}" th:each="eachzt:${zt}">
+                              <span th:text="${eachzt.title}"></span>
+                              <img src="../static/images/center/6.jpg" th:src="@{${eachzt.firstPicture}}" alt="" style="height:100%;border-radius: 15px;">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+
+          <div class="type-column">
+              <div class="center-box">
+                  <h2>专栏详情</h2>
+                  <div><!--这个div是表示标题下部区域 随图片大小变化 不可忽略!!!!!-->
+
+                      <div style="position: absolute;
+                                  top:10px;
+                                  bottom:10px;
+                                  left:10px;
+                                  right:0px;
+                                  z-index: 1050">
+                            <!--专栏搜索框-->
+                            <div style="height:55px;
+                                        width:100%;display: flex;
+                                        box-sizing: border-box;
+                                        padding:0 10px;
+                                        justify-content: space-between;
+                                        align-items: center">
+                                <input type="text" name="columnTitle" id="columnTitleValue"
+                                       style="width:60%;
+                                              height:30px;
+                                              outline: none;border-radius: 5px;
+                                              background: transparent;
+                                              color:#fff;">
+                                <button onclick="sendcolumnTitle()" class="ui teal basic button" id="column-search-btn" type="button"><i class="search icon"></i></button>
+                            </div>
+                            <div id="columns" style="position: absolute;
+                                                     top:55px;bottom:0px;
+                                                     left:10px;right:10px;
+                                                     overflow-y: scroll">
+                                 <!--替换体-->
+                                <div th:fragment="columnMuban" th:each="columnDetail:${columnsDetails}" th:if="${columnDetail.id}!=0">
+                                    <a href="#" th:href="@{/index/columns/{id}(id=${columnDetail.id})}" target="_blank">
+                                        <div style="width:100%;height:80px;
+                                                    margin-top:8px;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: space-between;
+                                                    border: 2px solid #fff;
+                                                    box-sizing: border-box;
+                                                    padding-left: 10px;border-radius:15px;
+                                                    background: rgba(177,177,177,0.5);
+                                                    overflow: hidden">
+                                            <span th:text="${columnDetail.title}" style="font-size: 18px;
+                                                                                         line-height: 20px;
+                                                                                         font-weight: bold;
+                                                                                         color:#fff;
+                                                                                         max-width: 230px">
+                                            </span>
+                                            <img src="" th:src="@{${columnDetail.firstPicture}}" style="height:75px;
+                                                                                                        border-radius: 15px;"
+                                                                                                        alt="">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                      </div>
+
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/7.jpg" th:src="@{${img1}}">
+
+                  </div>
+              </div>
+          </div>
+
+          <div class="type-nav">
+              <div class="center-box">
+                  <h2>导航</h2>
+                  <div class="side-nav"><!--这个div是表示标题下部区域 随图片大小变化 不可忽略!!!!!-->
+
+                      <div style="position: absolute;
+                                  left:20px;
+                                  right:20px;
+                                  top:20px;
+                                  bottom:20px;
+                                  overflow-y: scroll;
+                                  z-index: 2020">
+                          <div style="width:100%;
+                                      display: flex;
+                                      flex-direction: row;
+                                      flex-wrap: wrap;">
+                              <a href="http://www.bilibili.com/" target="_blank" style="width:33.33%;display: flex;justify-content: center;align-items: center;flex-direction: column;margin-top: 38px;">
+                                  <img src="https://rin.linovel.net/attachment/100023/1009009_967ebbdfa1d5b8091e162b853d4d1f59.jpg" alt="">
+                                  <span style="color:#fff;font-size: 18px;margin-top: 7px;">哔哩哔哩</span>
+                              </a>
+                              <a href="http://www.acfun.cn/" target="_blank" style="width:33.33%;display: flex;justify-content: center;align-items: center;flex-direction: column;margin-top: 38px;">
+                                  <img src="https://rin.linovel.net/attachment/100023/1009009_e77480c8c1a8b5e265b2d6a28104d7c2.jpg" alt="">
+                                  <span style="color:#fff;font-size: 18px;margin-top: 7px;">AcFun</span>
+                              </a>
+                              <a href="https://www.iqiyi.com" target="_blank" style="width:33.33%;display: flex;justify-content: center;align-items: center;flex-direction: column;margin-top: 38px;">
+                                  <img src="https://www.moe123.net/static/img/iqiyi_246x0w.png" alt="">
+                                  <span style="color:#fff;font-size: 18px;margin-top: 7px;">爱奇艺</span>
+                              </a>
+                              <a href="https://bcy.net" target="_blank" style="width:33.33%;display: flex;justify-content: center;align-items: center;flex-direction: column;margin-top: 38px;">
+                                  <img src="https://rin.linovel.net/attachment/100023/1009009_6db7e0aab18d501516118d9e3c97c513.jpg" alt="">
+                                  <span style="color:#fff;font-size: 18px;margin-top: 7px;">半次元</span>
+                              </a>
+                              <a href="https://store.steampowered.com" target="_blank" style="width:33.33%;display: flex;justify-content: center;align-items: center;flex-direction: column;margin-top: 38px;">
+                                  <img  src="https://rin.linovel.net/attachment/100023/1009009_91d6be560f7d8b85cb0b0a3b42e27d03.jpg" alt="">
+                                  <span style="color:#fff;font-size: 18px;margin-top: 7px;">Steam</span>
+                              </a>
+                              <a href="http://www.dmzj.com/" target="_blank" style="width:33.33%;display: flex;justify-content: center;align-items: center;flex-direction: column;margin-top: 38px;">
+                                  <img src="https://rin.linovel.net/attachment/100023/1009009_3b2b677b631a221e3724d0d6f99fa6ef.png" alt="">
+                                  <span style="color:#fff;font-size: 18px;margin-top: 7px;">动漫之家</span>
+                              </a>
+                              <a href="https://www.pixiv.net" target="_blank" style="width:33.33%;display: flex;justify-content: center;align-items: center;flex-direction: column;margin-top: 38px;">
+                                  <img src="https://rin.linovel.net/attachment/100023/1009009_69a59f4577315d55f340e438e7539252.jpg" alt="">
+                                  <span style="color:#fff;font-size: 18px;margin-top: 7px;">Pixiv</span>
+                              </a>
+                              <a href="https://mail.qq.com/" target="_blank" style="width:33.33%;display: flex;justify-content: center;align-items: center;flex-direction: column;margin-top: 38px;">
+                                  <img src="https://www.moe123.net/static/img/logo/qqmail.png" alt="">
+                                  <span style="color:#fff;font-size: 18px;margin-top: 7px;">QQ邮箱</span>
+                              </a>
+                              <a href="https://music.163.com" target="_blank" style="width:33.33%;display: flex;justify-content: center;align-items: center;flex-direction: column;margin-top: 38px;">
+                                  <img src="https://rin.linovel.net/attachment/100023/1009009_8abe5bb34a4d087f677b154b7ba7deef.jpg" alt="">
+                                  <span style="color:#fff;font-size: 18px;margin-top: 7px;">云音乐</span>
+                              </a>
+                              <a href="https://www.linovel.net" target="_blank" style="width:33.33%;display: flex;justify-content: center;align-items: center;flex-direction: column;margin-top: 38px;">
+                                  <img src="https://rin.linovel.net/attachment/100023/1009009_fce84185dcbaa95b9c5458db1e684e56.jpg" alt="">
+                                  <span style="color:#fff;font-size: 18px;margin-top: 7px;">轻之文库</span>
+                              </a>
+                              <a href="https://www.bangumi.tv/" target="_blank" style="width:33.33%;display: flex;justify-content: center;align-items: center;flex-direction: column;margin-top: 38px;">
+                                  <img src="https://rin.linovel.net/attachment/100023/1009009_84beb6137ac213aebbefe86dd37c9cec.jpg" alt="">
+                                  <span style="color:#fff;font-size: 18px;margin-top: 7px;">番组计划</span>
+                              </a>
+                              <a href="https://zh.moegirl.org/" target="_blank" style="width:33.33%;display: flex;justify-content: center;align-items: center;flex-direction: column;margin-top: 38px;">
+                                  <img src="https://rin.linovel.net/attachment/100023/1009009_1081957911d9445d3041018f25a87c2b.jpg" alt="">
+                                  <span style="color:#fff;font-size: 18px;margin-top: 7px;">萌娘百科</span>
+                              </a>
+
+                          </div>
+                      </div>
+
+                      <div class="img-cover"></div>
+                      <img class="imgSide" src="../static/images/center/7.jpg" th:src="@{${img2}}">
+                  </div>
+              </div>
+          </div>
+
+          <div class="type-pixiv">
+              <div class="pixiv-box" style="height:2000px;width:440px">
+                  <h2><span>pixiv日榜</span></h2>
+                  <div class="pixiv-content" style="margin-top: 10px;
+                                                    width:420px;margin-left: 10px;
+                                                    height:1900px;
+                                                    overflow-y: scroll;
+                                                    border: 2px solid #fff;
+                                                    border-radius: 10px;">
+                      <div th:each="pixiv:${pixivList}" style="width:100%;
+                                                        display: flex;
+                                                        flex-direction: column;
+                                                        justify-content: center;
+                                                        align-items: center;
+                                                        margin-top: 20px;">
+                          <div style="font-weight: 800;font-size: 18px;margin-bottom: 8px;">
+                              <span th:text="${pixiv.title}"></span>
+                              <span>:By-</span>
+                              <span th:text="${pixiv.author}"></span>
+                          </div>
+                          <a href="#" th:href="${pixiv.img_url}" target="_blank">
+                              <img src="" th:src="@{${pixiv.img_url}}" style="width:380px;
+                                                                              border-radius: 10px;" alt="">
+                          </a>
+                          <a href="" th:href="@{${pixiv.url}}" target="_blank">
+                              <span th:text="${pixiv.url}"></span>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+      </div>
+  </div>
+
+
+<div th:fragment="RightMenu2" class="center-other">
+
+    <div class="announce"></div>
+
+    <div class="MusicPlayer">
+        <audio id="audio" onended="AfterEnded()" src="https://api.quyihuang.cn/couldmusiceasy/type=url?id=4937357"></audio>
+        <div class="music-head">
+            <div>
+                <img id="musicPicture" src="https://p2.music.126.net/tYw5aBfDQiq9u3YISln3-w==/4462917697159672.jpg?param=300y300" alt="">
+            </div>
+            <div class="center">
+                <div class="progressBar" onmousedown="scrollChange(this)">
+                    <div class="currentBar"><i class="icon circle"></i></div>
+                </div>
+                <div class="time">
+                    <p><span id="currenttime">0:00</span><span>/</span><span id="duration">0:00</span></p>
+                </div>
+            </div>
+            <div class="music-button">
+                <div class="pre" onclick="PreSong(this)"><i class="angle double left icon large"></i></div>
+                <div id="playPause" onclick="PlayOrPause(this)"><i class="pause icon large"></i></div>
+                <div class="next" onclick="NextSong(this)"><i class="angle double right icon large"></i></div>
+            </div>
+        </div>
+        <div class="songList">
+            <!--<div class="song-out" onclick="changeMusic(this)" th:each="list:${MusicList}">
+                <div  onmouseover="onover(this)" onmouseout="onout(this)"  class="song"  th:data-value="${list.url}" th:data-pic="${list.cover}" th:text="${list.artist}+'-'+${list.name}"></div>
+            </div>-->
+            <div class="song-out" onclick="changeMusic(this)" th:each="list:${MusicList}">
+                <div  onmouseover="onover(this)" onmouseout="onout(this)"  class="song"  th:data-value="${list.url}" th:data-pic="${list.cover}" th:text="${list.artist}+'-'+${list.name}"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="top-types">
+        <div class="top-types-head">
+            <span>分类</span>
+            <a>learn more</a>
+        </div>
+        <div th:each="type:${types}" class="top-type-container">
+            <a th:href="@{/index/types/{id}(id=${type.id})}" target="_blank" class="item">
+                <span th:text="${type.name}">aaa</span>
+                <div th:text="${#arrays.length(type.blogs)}" class="ui teal basic left pointing label">123</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="top-tags">
+        <div class="top-tags-head">
+            <span>标签</span>
+            <a >learn more</a>
+        </div>
+        <div class="top-tag-container">
+            <a th:each="tag:${tags}" th:href="@{/index/tags/{id}(id=${tag.id})}" target="_blank" class="ui teal basic left pointing label">
+               <span th:text="${tag.name}"></span><div th:text="${#arrays.length(tag.blogs)}" class="detail"></div>
+            </a>
+        </div>
+    </div>
+
+    <div class="top-recommend">
+        <div class="top-recommend-head">
+            <span>专栏</span>
+        </div>
+        <div th:each="column:${columns}" th:if="${column.id}!=0" class="top-recommend-container">
+            <a class="item" target="_blank" th:href="@{/index/columns/{id}(id=${column.id})}">
+                <span th:text="${column.title}">aaa</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="top-recommend">
+        <div class="top-recommend-head">
+            <span>推荐</span>
+        </div>
+        <div th:each="re:${recommend}" class="top-recommend-container">
+            <a class="item" target="_blank" th:href="@{/blog/{id}(id=${re.id})}">
+                <span th:text="${re.title}">aaa</span>
+            </a>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+  <div class="m-footer" th:fragment="Bottom">
+      <div class="footer-container">
+          </a>
+          <div class="footer-about">
+              <h2>关于我</h2>
+              <p>因为无聊</p>
+              <p>找点有意思的事</p>
+          </div>
+          <div class="footer-connect">
+              <h2>联系我</h2>
+              <p>QQ:994484625</p>
+              <p>BiliBili:茕丿夜</p>
+              <p>明日方舟:茕丿夜</p>
+          </div>
+          <div class="footer-introduce">
+              <h2>信息</h2>
+              <p></p>
+              <p></p>
+              <p></p>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p>还没有注册域名，买倒是买了，但是懒</p>
+      </div>
+
+  </div>
+
+</body>
+</html>

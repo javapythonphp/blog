@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
+.m-footer{
+	height:300px;
+	width:100%;
+	background: rgba(0,0,0,.7);
+	position: relative;
+	bottom: 0px;	
+	margin-top:100px;
+}
+.footer-container{
+	position: absolute;
+	display: flex;
+	align-items: center;
+	left:225px;
+	right:225px;
+	top:10px;
+	bottom:30px;
+	text-align: center;
+	line-height: 35px;
+	color:#D3D3D3;
+	transition:all 1s;
+	font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+}
+
+.footer-container .footer-about{
+	 position: absolute;
+     width:450px;
+	 height:180px;
+	 transform: translate(-800px,0);
+	 opacity: 0;
+	 transition:all 1s;
+	 border-right: 1px solid #C3C3C3
+}
+
+.footer-container .footer-connect{
+	  border-right: 1px solid #C3C3C3;
+	  position: absolute;
+	  left:450px;
+	  width:450px;
+	  height:180px;
+	  transform: scale(0);
+	  opacity: 0;
+	  transition:all 1.2s;
+}
+
+.footer-container .footer-introduce{
+	  position: absolute;
+	  left:900px;
+	  right:0;
+	  height:180px;
+      transform: translate(800px,0);
+	  opacity: 0;
+	  transition:all 1s;
+}
+ 
+.footer-container .footer-trans{
+	  transform: scale(1) translate(0,0);
+	  opacity: 1;
+}
+
+.footer-bottom{
+	  position: absolute;
+	  bottom: 20px;;
+	  left:50%;
+	  transform: translate(-50%,0);
+	  text-align:center;
+	  font-size: 15px;
+	  font-weight: 300;
+	  font-family:Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif";
+	  color:aliceblue;
+}
+
+
+
+

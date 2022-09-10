@@ -1,0 +1,26 @@
+2021-09-03 00:11:56.931  INFO 12580 --- [main] com.zyc.myblog.MyblogApplication         : Starting MyblogApplication v0.0.1-SNAPSHOT on DESKTOP-JAKPI49 with PID 12580 (E:\MyBlogProject\target\one.jar started by 99448 in E:\MyBlogProject\target)
+2021-09-03 00:11:56.951 DEBUG 12580 --- [main] com.zyc.myblog.MyblogApplication         : Running with Spring Boot v2.1.13.RELEASE, Spring v5.1.14.RELEASE
+2021-09-03 00:11:56.952  INFO 12580 --- [main] com.zyc.myblog.MyblogApplication         : The following profiles are active: dev
+2021-09-03 00:11:59.026  INFO 12580 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-09-03 00:11:59.278  INFO 12580 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 231ms. Found 8 JPA repository interfaces.
+2021-09-03 00:12:01.458  INFO 12580 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20016 (http)
+2021-09-03 00:12:01.529  INFO 12580 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-09-03 00:12:01.531  INFO 12580 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2021-09-03 00:12:01.748  INFO 12580 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-09-03 00:12:01.749  INFO 12580 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4668 ms
+2021-09-03 00:12:02.463  INFO 12580 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-09-03 00:12:03.335  INFO 12580 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-09-03 00:12:03.473  INFO 12580 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2021-09-03 00:12:03.800  INFO 12580 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.15.Final}
+2021-09-03 00:12:03.827  INFO 12580 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2021-09-03 00:12:04.431  INFO 12580 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-09-03 00:12:05.539  INFO 12580 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-09-03 00:12:07.639  INFO 12580 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-09-03 00:12:09.483  INFO 12580 --- [main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2021-09-03 00:12:13.243  INFO 12580 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-09-03 00:12:13.461  WARN 12580 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-09-03 00:12:13.620  INFO 12580 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-09-03 00:12:14.792  INFO 12580 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20016 (http) with context path ''
+2021-09-03 00:12:14.796  INFO 12580 --- [main] com.zyc.myblog.MyblogApplication         : Started MyblogApplication in 19.099 seconds (JVM running for 20.248)
